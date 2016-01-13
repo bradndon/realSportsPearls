@@ -1,20 +1,37 @@
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
   <div id="container">
-  <div role="navigation" id="navigation"></div>
+  <div role="navigation" id="navigation">
+    <ul>
+      <li><img id="logo" src="logo.png"></li>
+      <li class="selected"><a href="#"><p class="big-nav-text">START FROM</p><p class="small-nav-text">THE BEGINNING</p></a></li>
+      <li><a href="#"><p class="big-nav-text">CUSTOMIZE</p><p class="small-nav-text">YOUR NECKLACE</p></a></li>
+      <li><a href="#"><p class="big-nav-text">LEARN</p><p class="small-nav-text">ABOUT US</p></a></li>
+      <li><a href="#"><p class="big-nav-text">DROP US</p><p class="small-nav-text">A LINE</p></a></li>
+    </ul>
+  </div>
 
   <div id="content">
 
 
-    <div id="top"></div>
+    <div id="top">asdfasdf</div>
     <div id="bottom">
-      <div id="bottom-left"></div>
-      <div id="bottom-right"></div>
+      <div id="bottom-left">asdf</div>
+      <div id="bottom-right">asdf</div>
     </div>
   </div>
 </div>
 
+<script>
+  $(function() {
+
+    var div = $('#navigation');
+    div.css('width', div.height()/5);
+  });
+</script>
 </body>
