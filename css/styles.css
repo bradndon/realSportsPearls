@@ -147,7 +147,22 @@ a:hover {
   float: right;
   height: 100%;
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-device-width: 800px)  {
+  #bottom-left {
+    width: 100%;
+    border-bottom: 10px solid #191b1c;
+    border-right: none;
+  }
+  #bottom-right {
+    width: 100%;
+    float: right;
+  }
+  .image-overlay-right {
+    padding-right: 50px;
+  }
+}
+
+@media only screen and (max-width: 800px)  {
   #bottom-left {
     width: 100%;
     border-bottom: 10px solid #191b1c;

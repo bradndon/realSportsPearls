@@ -13,7 +13,7 @@
 <script>
 $(window).resize(function(){
   var div = $('#navigation');
-  var newWidth = div.height() / 5
+  var newWidth = window.innerHeight / 5
   div.css('width', newWidth);
   var content = $('#content');
   content.css('width', window.innerWidth - newWidth );
@@ -21,7 +21,7 @@ $(window).resize(function(){
   $(document).ready(function() {
     var mq = window.matchMedia( "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)" );
     var div = $('#navigation');
-    var newWidth = div.height() / 5
+    var newWidth = window.innerHeight / 5
     div.css('width', newWidth);
     var content = $('#content');
     if (mq.matches) {
