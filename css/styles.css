@@ -56,6 +56,10 @@ a:hover {
   height: 100%;
   max-width: 400px;
   padding-right: 100px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .overlay-text-big {
   font-size: 28px;
@@ -76,7 +80,7 @@ a:hover {
 #customize {
   font-family: 'Lato' sans-serif;
   font-size: 20;
-  margin-left: 8px;
+  margin-right: 70px;
   margin-bottom: 0px;
   padding: 15px 20px 15px 20px;
   background-color: #24292E;
