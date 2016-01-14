@@ -1,8 +1,8 @@
 <div id="top">
   <div class="image-overlay-right">
-    <p style="font-size:36px; font-family: 'Lato', sans-serif; margin: 8px;">RISUS INCEPTOS PHARETRA MAGASS</p>
-    <div style="width:100px; height: 5px; background-color: black; margin-right: 285px;"></div>
-    <p style="font-size:31px; font-family: 'Lato', sans-serif; margin: 8px;">Total synergy between power, comfort and design.</p>
+    <p style="font-size:36px; font-family: 'Lato', sans-serif; margin: 28px 8px 30px 8px;">RISUS INCEPTOS PHARETRA MAGASS</p>
+    <div style="width:100px; height: 5px; background-color: black;margin-left: 8px;"></div>
+    <p style="font-size:31px; font-family: 'Lato', sans-serif; margin: 30px 8px 30px 8px;">Total synergy between power, comfort and design.</p>
     <button id="customize">CUSTOMIZE YOUR NECKLACE</button>
   </div>
 </div>
@@ -10,3 +10,34 @@
   <div id="bottom-left"><div id="overlay-div"><p class="overlay-text-big">OVER 30 COLORS</p><p class="overlay-text-small">TO CHOOSE FROM</p></div></div>
   <div id="bottom-right"></div>
 </div>
+<script>
+$(window).resize(function(){
+  var div = $('#navigation');
+  var newWidth = div.height() / 5
+  div.css('width', newWidth);
+  var content = $('#content');
+  content.css('width', window.innerWidth - newWidth );
+});
+  $(document).ready(function() {
+    var mq = window.matchMedia( "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)" );
+    var div = $('#navigation');
+    var newWidth = div.height() / 5
+    div.css('width', newWidth);
+    var content = $('#content');
+    if (mq.matches) {
+      content.css('width', window.innerWidth - newWidth);
+    } else {
+      content.css('width', window.innerWidth - newWidth );
+
+    }
+  });
+
+  $('li a').click(function( event ) {
+      $('li a').each(function(){
+        $(this).removeClass('selected');
+      });
+      $(this).addClass('selected');
+
+    });
+
+</script>
