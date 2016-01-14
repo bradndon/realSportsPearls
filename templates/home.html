@@ -24,6 +24,7 @@ $(window).resize(function(){
     var newWidth = div.height() / 5
     div.css('width', newWidth);
     var content = $('#content');
+    $('#bottom').css('height',  newWidth * 2 - 10);
     if (mq.matches) {
       content.css('width', window.innerWidth - newWidth);
     } else {

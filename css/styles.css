@@ -117,14 +117,13 @@ a:hover {
   background-size: cover;
   background-position: bottom;
   width: auto;
-  height: 61.5%;
+  height: 60%;
   border-bottom: 10px solid #191b1c;
-  -webkit-box-sizing: border-box;
 
 }
 #bottom {
   width: auto;
-  height: 38.5%;
+  height: 40%;
 }
 #bottom-left {
   background: url("../images/pearls.png")no-repeat;
