@@ -1,3 +1,5 @@
+html { font-size: 62.5%; }
+
 body {
   margin: 0px;
   background-color: #191b1c;
@@ -45,11 +47,11 @@ a:hover {
 }
 .big-nav-text {
   margin: 0px;
-  font-size: 20px;
+  font-size: 2.0rem;
 }
 .small-nav-text {
   margin: 0px;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 .image-overlay-right {
   float: right;
@@ -62,11 +64,11 @@ a:hover {
   flex-direction: column;
 }
 .overlay-text-big {
-  font-size: 28px;
+  font-size: 2.8rem;
   margin:0px;
 }
 .overlay-text-small {
-  font-size: 20px;
+  font-size: 2.0rem;
   margin:0px;
 }
 #overlay-div {
@@ -79,7 +81,7 @@ a:hover {
 
 #customize {
   font-family: 'Lato' sans-serif;
-  font-size: 20;
+  font-size: 2.0rem;
   margin-right: 70px;
   margin-bottom: 0px;
   padding: 15px 20px 15px 20px;
@@ -117,14 +119,13 @@ a:hover {
   background-size: cover;
   background-position: bottom;
   width: auto;
-  height: 61.5%;
+  height: 60%;
   border-bottom: 10px solid #191b1c;
-  -webkit-box-sizing: border-box;
 
 }
 #bottom {
   width: auto;
-  height: 38.5%;
+  height: 40%;
 }
 #bottom-left {
   background: url("../images/pearls.png")no-repeat;
