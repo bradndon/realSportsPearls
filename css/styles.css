@@ -71,6 +71,26 @@ a:hover {
   font-size: 2.0rem;
   margin:0px;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#contact-overlay {
+  min-width: 35rem;
+  width: 40%;
+  height: 30%;
+  background-color: #191b1c;
+}
+
 #overlay-div {
   text-align: center;
   font-family: 'Lato', sans-serif;

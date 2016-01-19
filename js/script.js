@@ -1,5 +1,7 @@
 var pearlsApp = angular.module('pearlsApp', ['ngRoute']);
 
+$('.modal').hide();
+
 pearlsApp.config(function($routeProvider, $locationProvider){
   $routeProvider
     .when('/', {
