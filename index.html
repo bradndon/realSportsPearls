@@ -18,7 +18,7 @@
           <img id="logo" src="images/logo.png">
         </li>
         <li>
-          <a href="/" class="selected" class="nav-link">
+          <a href="/" class="nav-link selected">
             <p class="big-nav-text">START FROM</p>
             <p class="small-nav-text">THE BEGINNING</p>
           </a>
@@ -49,9 +49,21 @@
 
 
     </div>
-    <div class="modal">
+    <div class="modal" >
         <div id="contact-overlay">
-          <button onclick="$('.modal').fadeOut(300);">Close</button>
+          <svg class="modal-close-button" style="float:right;" width="35px" height="35px" version="1.1" xmlns="http://www.w3.org/2000/svg"onclick="$('.modal').fadeOut(300);">
+            <line x1="5" y1="5" x2="30" y2="30" style="stroke:rgb(255,255,255);stroke-width:5" />
+            <line x1="30" y1="5" x2="5" y2="30" style="stroke:rgb(255,255,255);stroke-width:5" />
+          </svg><br>
+          <form id="contact-form">
+            <label for="name">NAME</label><br>
+            <input class="form-text" id="name" type="text"></input><br>
+            <label for="email">EMAIL</label<br>
+            <input class="form-text" id="email" type="text"></input><br>
+            <label for="message">MESSAGE</label><br>
+            <textarea class="form-text" id="message" rows="7" cols="50"></textarea><br>
+            <input type="submit" class="customize--small-margins" value="CONTACT US">
+          </form>
         </div>
     </div>
   </div>

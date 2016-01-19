@@ -82,13 +82,45 @@ a:hover {
   align-items: center;
   width: 100%;
   height: 100%;
+
+}
+
+.form-text {
+  border: 3px solid white;
+  background-color: transparent;
+  line-height: 1.5;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  padding: 5px 10px;
+  margin: 10px 0px;
+  width: 100%;
+}
+textarea {
+  resize: vertical;
+}
+
+label:hover{
+  cursor: pointer;
+}
+
+.form-text:focus {
+  border: 3px solid #4A90E2;
+  outline: none;
+}
+
+#contact-form {
+  color: white;
+  font-size: 1.6rem;
+  font-family: 'Lato', sans-serif;
 }
 
 #contact-overlay {
   min-width: 35rem;
   width: 40%;
-  height: 30%;
+  height: auto;
   background-color: #191b1c;
+  padding: 20px;
 }
 
 #overlay-div {
@@ -99,7 +131,7 @@ a:hover {
   color: white;
 }
 
-#customize {
+.customize {
   font-family: 'Lato' sans-serif;
   font-size: 2.0rem;
   margin-right: 70px;
@@ -109,7 +141,24 @@ a:hover {
   color: white;
   border: 1px white solid;
 }
-#customize:hover {
+.customize--small-margins {
+  font-family: 'Lato' sans-serif;
+  font-size: 2.0rem;
+  margin-right: 70px;
+  margin-bottom: 0px;
+  padding: 10px 15px;
+  background-color: #24292E;
+  color: white;
+  border: 1px white solid;
+}
+
+.modal-close-button:hover {
+  opacity: .7;
+}
+
+.customize:hover,
+.customize--small-margins:hover
+ {
   opacity: 0.7;
   cursor: pointer;
 }
