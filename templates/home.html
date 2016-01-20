@@ -28,7 +28,7 @@ $(window).resize(function(){
     var content = $('#content');
     $('#bottom').css('height',  newWidth * 2 - 10);
     if (mq.matches) {
-      content.css('width', window.innerWidth - newWidth);
+      content.css('width', window.innerWidth - newWidth - 15);
     } else {
       content.css('width', window.innerWidth - newWidth );
 
