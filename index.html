@@ -43,7 +43,41 @@
         </li>
       </ul>
     </div>
+    <div role="navigation" id="mobile-nav">
+      <div style="width:100%; height: 10%; background-color:#191b1c; text-align: center; color: white; font-family:'Lato', sans-serif; font-size: 1.6rem;">
+        <button value="asdf" style="float: left;" onclick="$(this).parent().slideUp().siblings('div').slideDown();"></button>
+        REAL SPORTS PEARLS
+      </div>
+    <div >
 
+      <ul>
+        <li>
+          <a href="/" class="nav-link-mobile selected">
+            <p class="big-nav-text">START FROM</p>
+            <p class="small-nav-text">THE BEGINNING</p>
+          </a>
+        </li>
+        <li>
+          <a href="/customize" class="nav-link-mobile nav-customize">
+            <p class="big-nav-text">CUSTOMIZE</p>
+            <p class="small-nav-text">YOUR NECKLACE</p>
+          </a>
+        </li>
+        <li>
+          <a href="/about" class="nav-link-mobile">
+            <p class="big-nav-text">LEARN</p>
+            <p class="small-nav-text">ABOUT US</p>
+          </a>
+        </li>
+        <li>
+          <a href="" onclick="$('.modal').fadeIn(200);$(this).parent().parent().parent().slideUp().siblings('div').slideDown()">
+            <p class="big-nav-text">DROP US</p>
+            <p class="small-nav-text">A LINE</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
     <div id="content" ng-view>
 
 
