@@ -36,45 +36,45 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $location.url('/customize');
   };
 }).controller('CustomCtrl', function($scope) {
-  $scope.chosenRight = "1flip.png";
-  $scope.chosenLeft = "1.png";
+  $scope.chosenRight = "rnec1b.png";
+  $scope.chosenLeft = "rneck1a.png";
   $scope.radioRight = [{
     label: "Episode 1",
-    val: "1flip.png"
+    val: "rnec1b.png"
   }, {
     label: "Episode 2",
-    val: "2flip.png"
+    val: "rnec2b.png"
   },  {
     label: "Episode 3",
-    val: "3flip.png"
+    val: "rnec3b.png"
   },  {
     label: "Episode 4",
-    val: "4flip.png"
+    val: "rnec4b.png"
   },  {
     label: "Episode 5",
-    val: "5flip.png"
+    val: "rnec5b.png"
   },  {
     label: "Episode 6",
-    val: "6flip.png"
+    val: "rnec6b.png"
   }];
   $scope.radioLeft = [{
     label: "Episode 1",
-    val: "1.png"
+    val: "rneck1a.png"
   }, {
     label: "Episode 2",
-    val: "2.png"
+    val: "rneck2a.png"
   },  {
     label: "Episode 3",
-    val: "3.png"
+    val: "rneck3a.png"
   },  {
     label: "Episode 4",
-    val: "4.png"
+    val: "rneck4a.png"
   },  {
     label: "Episode 5",
-    val: "5.png"
+    val: "rneck5a.png"
   },  {
     label: "Episode 6",
-    val: "6.png"
+    val: "rneck6a.png"
   }];
 
 

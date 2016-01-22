@@ -1,6 +1,6 @@
-<div style="width: 100%; height: 100%; background-color: white; color: white;">
-  <img style="width: 100%; z-index:2;" ng-src="images/{{chosenRight}}">
-  <img id="img2" style="position:absolute;top:0px;right:0px;width: 100%; z-index:1;" ng-src="images/{{chosenLeft}}">
+<div style="width: 100%; height: 100%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover;">
+  <img style="width: 100%; z-index:2;" ng-src="images/Rondeles_Necklace/{{chosenRight}}">
+  <img id="img2" style="position:absolute;top:0px;right:0px;width: 100%; z-index:1;" ng-src="images/Rondeles_Necklace/{{chosenLeft}}">
   <div style="float:left">
     <div ng-repeat="chk in radioLeft">
       <input type="radio" name="left" ng-model="$parent.chosenLeft" ng-value="chk.val" />
