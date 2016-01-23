@@ -21,8 +21,8 @@ li {
 }
 #mobile-nav {
   display: none;
-  position:fixed;
-  top:0;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 100%;
   z-index: 50;
@@ -36,14 +36,10 @@ li {
   width: 100%;
   height: 100%;
 }
-
-
 .selected {
   background-color: #4A90E2;
   color: white;
 }
-
-
 ul li:first-child {
   border-top: none;
 }
@@ -179,7 +175,6 @@ label:hover {
   height: 70%;
 }
 #navigation {
-
   z-index: 1000;
   position: fixed;
   height: 100%;
@@ -187,8 +182,6 @@ label:hover {
   min-width: 140px;
   max-width: 40%;
 }
-
-
 #container {
   width: 100%;
   height: 100%;
@@ -199,6 +192,16 @@ label:hover {
   float: right;
   vertical-align: top;
   margin-left: 600px;
+}
+.rondeles {
+  width: 180;
+  height: 112;
+  background: url('../images/sprite.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+[type="radio"]:checked + label div {
+  background-color: white;
 }
 #top {
   background: url("../images/main.png")no-repeat;
@@ -261,28 +264,25 @@ label:hover {
     padding-right: 50px;
   }
 }
-
 @media only screen and (max-device-width: 620px) {
-    #content {
-      margin-top: 200px;
-    }
-    #mobile-nav{
-      display:block;
-    }
-    #navigation{
-      display: none;
-    }
-
+  #content {
+    margin-top: 200px;
+  }
+  #mobile-nav {
+    display: block;
+  }
+  #navigation {
+    display: none;
+  }
 }
 @media only screen and (max-width: 620px) {
   #content {
     margin-top: 10%;
   }
-  #mobile-nav{
-    display:block;
+  #mobile-nav {
+    display: block;
   }
-  #navigation{
+  #navigation {
     display: none;
   }
-
 }
