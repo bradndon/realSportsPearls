@@ -1,18 +1,35 @@
-<div style="width: 100%; height: 100%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover;">
-  <img style="width: 100%; z-index:2;" ng-src="images/Rondeles_Necklace/{{chosenRight}}">
-  <img id="img2" style="position:absolute;top:0px;right:0px;width: 100%; z-index:1;" ng-src="images/Rondeles_Necklace/{{chosenLeft}}">
-  <div style="float:left">
+<div ng-switch="isLoading">
+
+<p ng-switch-when="true" style="color:white;font-size:4.8rem">
+
+            Your images are being loaded... {{ percentLoaded }}%
+
+        </p>
+
+<div ng-switch-when="false" style="width: 100%; height: 100%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover;">
+  <img style="width: 100%; z-index:2;" ng-src="{{imageLocations[chosenLeft]}}">
+  <img id="img2" style="position:absolute;top:0px;right:0px;width: 100%; z-index:1;" ng-src="{{imageLocations[chosenRight]}}">
+  <div style="float:left;">
     <div ng-repeat="chk in radioLeft">
-      <input type="radio" name="left" ng-model="$parent.chosenLeft" ng-value="chk.val" />
-      <label>{{chk.label}}</label>
+      <input type="radio" name="left" id="UNIQUELABEL{{$id}}_1" ng-model="$parent.chosenLeft" ng-value="chk.val" />
+      <label for="UNIQUELABEL{{$id}}_1">{{chk.label}}</label>
+
     </div>
 
   </div>
   <div ng-repeat="chk in radioRight">
-    <input type="radio" name="right" ng-model="$parent.chosenRight" ng-value="chk.val" />
-    <label>{{chk.label}}</label>
+    <input type="radio" id="UNIQUELABEL{{$id}}_1" name="right" ng-model="$parent.chosenRight" ng-value="chk.val" />
+    <label for="UNIQUELABEL{{$id}}_1">{{chk.label}}
+
+    <div style="width:180;height: 112;background:url('../images/sprite.png');background-repeat: no-repeat;background-size:cover" ng-style="{'background-position': getSpriteStyle($index)}"></div>
+  </label>
+
   </div>
+  <p>{{chosenLeft}}</p>
+  <p>{{chosenRight}}</p>
 </div>
+
+
 <script>
   $(window).resize(function() {
     var div = $('#navigation');
