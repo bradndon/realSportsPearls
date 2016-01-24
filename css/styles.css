@@ -76,8 +76,8 @@ a:hover {
   float: right;
   height: 100%;
   max-width: 400px;
-  padding-right: 100px;
-  padding-left: 100px;
+  /*padding-right: 100px;*/
+  /*padding-left: 100px;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,7 +220,7 @@ label > div{
   justify-content: center;
   align-items: center;
 }
-[type="radio"]:checked + label > div {
+[type="checkbox"]:checked + label > div {
   background-color: white;
 }
 #top {

@@ -21,7 +21,7 @@
     </div> -->
   <div id="bottom--custom" style="height: 38.2%; width: 100%; background-color:#CECECE;">
     <div ng-repeat="chk in radioLeft" style="float:left; height:25%; background-color:#CECECE;" ng-style="getLabelWidth()">
-      <input type="radio" style="display: none;" name="left" id="UNIQUELABEL{{$id}}_1" ng-model="$parent.chosenLeft" ng-value="chk.val" />
+      <input type="checkbox" style="display: none;" ng-model="chk.checked" name="UNIQUELABEL{{$id}}_1" id="UNIQUELABEL{{$id}}_1" ng-click="updateSelection($index, radioLeft)"/>
       <label for="UNIQUELABEL{{$id}}_1">
         <div>
           <div class="rondeles" ng-style="{'background-image': getSpriteStyle($index)}"></div>

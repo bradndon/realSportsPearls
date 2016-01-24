@@ -53,13 +53,61 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   for (var i = 0; i < 36; i++){
     $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i+1) + "a.png");
     $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i+1) + "b.png");
-    $scope.radioRight.push({label: ("Rondele " + (i+1)), val: 2*i, img: i*231})
-    $scope.radioLeft.push({label: ("Rondele " + (i+1)), val: 2*i+1, img: i*231})
+    $scope.radioRight.push({label: ("Rondele " + (i+1)), val: 2*i, img: i*231, checked: false});
+    $scope.radioLeft.push({label: ("Rondele " + (i+1)), val: 2*i+1, img: i*231, checked: false});
   }
   $scope.imageLocations.push(  "../images/Rondeles_Necklace/necklace_base.jpg");
   for (var i = 0; i < 36; i++){
     $scope.imageLocations.push("../images/Rondeles/rondelle" + (i+1) + ".png");
   }
+  $scope.numChecked = 0;
+  $scope.CheckAmount = function(){
+    $scope.numChecked++;
+    if ($scope.numChecked > 2){
+      console.log($scope.numChecked);
+      $scope.numChecked--;
+      return false;
+    }
+    return true;
+  }
+  $scope.firstChosen = -1;
+  $scope.secondChosen = -1
+  $scope.updateSelection = function(position, entities) {
+    // angular.forEach(entities, function(subscription, index) {
+      subscription = entities[position];
+      console.log(subscription);
+      if(subscription.checked){
+        if(position == $scope.secondChosen){
+          $scope.secondChosen = -1;
+          $scope.chosenRight = $scope.chosenLeft - 1;
+        } else if (position == $scope.firstChosen && $scope.secondChosen != -1){
+          $scope.firstChosen = $scope.secondChosen;
+          $scope.chosenLeft = $scope.chosenRight + 1;
+          $scope.secondChosen = -1;
+        } else {
+          $scope.firstChosen = -1;
+          $scope.chosenLeft = 1;
+          $scope.chosenRight = 0;
+
+        }
+      } else if($scope.secondChosen != -1) {
+        $scope.chosenLeft = $scope.chosenRight + 1;
+        $scope.chosenRight = subscription.val - 1;
+        entities[$scope.firstChosen].checked = false;
+        $scope.firstChosen = $scope.secondChosen;
+        $scope.secondChosen = position;
+
+      } else if ($scope.firstChosen != -1) {
+        $scope.chosenRight = subscription.val - 1;
+        $scope.secondChosen = position;
+      }else {
+        $scope.firstChosen = position;
+        $scope.chosenLeft = subscription.val;
+        $scope.chosenRight = subscription.val - 1;
+      }
+    // });
+  }
+
   $scope.getLabelWidth = function(){
     return {'width': $('#bottom--custom').first().width()/9 + 'px'};
   }
@@ -69,8 +117,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
     var ratio = (($('.rondeles').first().width()))/fullWidth;
     return 'url(' + $scope.imageLocations[73+id] + ')';}
-  $scope.getImage = function(id){return "url(" + $scope.imageLocations[id] + ")";}
-  console.log($scope.imageLocations);
+  $scope.getImage = function(id){
+    return "url(" + $scope.imageLocations[id] + ")";}
   // Preload the images; then, update display when returned.
   preloader.preloadImages( $scope.imageLocations ).then(
       function handleResolve( imageLocations ) {
