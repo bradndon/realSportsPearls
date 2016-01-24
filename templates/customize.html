@@ -6,52 +6,55 @@
 
   </p>
 
-  <div ng-switch-when="false" style="width: 100%; height: 100%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover;">
-    <img style="width: 100%; z-index:2;" ng-src="{{imageLocations[chosenLeft]}}">
-    <img id="img2" style="position:absolute;top:0px;right:0px;width: 100%; z-index:1;" ng-src="{{imageLocations[chosenRight]}}">
-    <div style="float:left;">
-      <div  ng-repeat="chk in radioLeft">
-        <input type="radio" style="display: none;" name="left" id="UNIQUELABEL{{$id}}_1" ng-model="$parent.chosenLeft" ng-value="chk.val" />
-        <label for="UNIQUELABEL{{$id}}_1">
-          <div class="rondeles" ng-style="{'background-position': getSpriteStyle($index)}"></div>
-        </label>
-      </div>
+  <div ng-switch-when="false" style="position: relative;width: 100%; height: 60%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover; background-position: center">
+    <div ng-style="{'background-image': getImage(chosenLeft)}" class="necklace-image"></div>
+    <div ng-style="{'background-image': getImage(chosenRight)}" class="necklace-image"></div>
 
-    </div>
-    <div  ng-repeat="chk in radioRight">
+
+  </div>
+  <!-- <div  ng-repeat="chk in radioRight">
       <input type="radio" id="UNIQUELABEL{{$id}}_1" style="display: none;" name="right" ng-model="$parent.chosenRight" ng-value="chk.val" />
       <label for="UNIQUELABEL{{$id}}_1">
-
-        <div style="margin-left:250px" class="rondeles" ng-style="{'background-position': getSpriteStyle($index)}"></div>
+        <div class="rondeles" ng-style="{'background-position': getSpriteStyle($index)}"></div>
       </label>
 
+    </div> -->
+  <div id="bottom--custom" style="height: 40%; width: 100%">
+    <div  ng-repeat="chk in radioLeft" style="float:left; height:25%;" ng-style="getLabelWidth()">
+      <input type="radio" style="display: none;" name="left" id="UNIQUELABEL{{$id}}_1" ng-model="$parent.chosenLeft" ng-value="chk.val" />
+      <label for="UNIQUELABEL{{$id}}_1" >
+        <div>
+        <div class="rondeles" ng-style="{'background-image': getSpriteStyle($index)}"></div>
+      </div>
+      </label>
     </div>
   </div>
+</div>
 
 
-  <script>
-    $(window).resize(function() {
-      var div = $('#navigation');
-      var newWidth = window.innerHeight / 5
-      div.css('width', newWidth);
-      var content = $('#content');
+<script>
+  $(window).resize(function() {
+    var div = $('#navigation');
+    var newWidth = window.innerHeight / 5
+    div.css('width', newWidth);
+    var content = $('#content');
+    content.css('width', window.innerWidth - newWidth);
+    $('#img2').css('width', window.innerWidth - newWidth);
+
+  });
+  $(document).ready(function() {
+    var mq = window.matchMedia("(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)");
+    var div = $('#navigation');
+    var newWidth = window.innerHeight / 5
+    div.css('width', newWidth);
+    var content = $('#content');
+    $('#bottom').css('height', newWidth * 2 - 10);
+    if (mq.matches) {
       content.css('width', window.innerWidth - newWidth);
-      $('#img2').css('width', window.innerWidth - newWidth);
+    } else {
+      content.css('width', window.innerWidth - newWidth - 15);
+      $('#img2').css('width', window.innerWidth - newWidth - 15);
 
-    });
-    $(document).ready(function() {
-      var mq = window.matchMedia("(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)");
-      var div = $('#navigation');
-      var newWidth = window.innerHeight / 5
-      div.css('width', newWidth);
-      var content = $('#content');
-      $('#bottom').css('height', newWidth * 2 - 10);
-      if (mq.matches) {
-        content.css('width', window.innerWidth - newWidth);
-      } else {
-        content.css('width', window.innerWidth - newWidth - 15);
-        $('#img2').css('width', window.innerWidth - newWidth - 15);
-
-      }
-    });
-  </script>
+    }
+  });
+</script>

@@ -57,9 +57,19 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $scope.radioLeft.push({label: ("Rondele " + (i+1)), val: 2*i+1, img: i*231})
   }
   $scope.imageLocations.push(  "../images/Rondeles_Necklace/necklace_base.jpg");
-  $scope.imageLocations.push(  "../images/sprite.png");
+  for (var i = 0; i < 36; i++){
+    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i+1) + ".png");
+  }
+  $scope.getLabelWidth = function(){
+    return {'width': $('#bottom--custom').first().width()/9 + 'px'};
+  }
+  $scope.getSpriteStyle = function(id){
+    var fullWidth = 361;
+    var fullHeight = 226.026;
 
-  $scope.getSpriteStyle = function(id){return '0 -' + (id * 112.5) + 'px';}
+    var ratio = (($('.rondeles').first().width()))/fullWidth;
+    return 'url(' + $scope.imageLocations[73+id] + ')';}
+  $scope.getImage = function(id){return "url(" + $scope.imageLocations[id] + ")";}
   console.log($scope.imageLocations);
   // Preload the images; then, update display when returned.
   preloader.preloadImages( $scope.imageLocations ).then(
