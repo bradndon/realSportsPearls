@@ -5,8 +5,8 @@
     Your images are being loaded... {{ percentLoaded }}%
 
   </p>
-
-  <div ng-switch-when="false" style="position: relative;width: 100%; height: 60%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover; background-position: center">
+<div ng-switch-when="false">
+  <div  style="position: relative;width: 100%; height: 61.5%; background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat; color: white; background-size: cover; background-position: center; border-bottom:10px solid #191b1c">
     <div ng-style="{'background-image': getImage(chosenLeft)}" class="necklace-image"></div>
     <div ng-style="{'background-image': getImage(chosenRight)}" class="necklace-image"></div>
 
@@ -19,18 +19,18 @@
       </label>
 
     </div> -->
-  <div id="bottom--custom" style="height: 40%; width: 100%">
-    <div  ng-repeat="chk in radioLeft" style="float:left; height:25%;" ng-style="getLabelWidth()">
+  <div id="bottom--custom" style="height: 38.2%; width: 100%; background-color:#CECECE;">
+    <div ng-repeat="chk in radioLeft" style="float:left; height:25%; background-color:#CECECE;" ng-style="getLabelWidth()">
       <input type="radio" style="display: none;" name="left" id="UNIQUELABEL{{$id}}_1" ng-model="$parent.chosenLeft" ng-value="chk.val" />
-      <label for="UNIQUELABEL{{$id}}_1" >
+      <label for="UNIQUELABEL{{$id}}_1">
         <div>
-        <div class="rondeles" ng-style="{'background-image': getSpriteStyle($index)}"></div>
-      </div>
+          <div class="rondeles" ng-style="{'background-image': getSpriteStyle($index)}"></div>
+        </div>
       </label>
     </div>
   </div>
 </div>
-
+</div>
 
 <script>
   $(window).resize(function() {

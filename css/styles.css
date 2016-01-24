@@ -205,20 +205,22 @@ label:hover {
   margin-left: 600px;
 }
 .rondeles {
-  width: 100%;
+  width: 60%;
   height: 100%;
-
   background-repeat: no-repeat;
   background-size:contain;
   background-position: center;
 }
-label div{
-  background-color: grey;
+label > div{
+  border: 1px solid #979797;
+  -webkit-box-sizing: border-box;
+  margin: 0px;
+  background-color: #CECECE;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-[type="radio"]:checked + label div {
+[type="radio"]:checked + label > div {
   background-color: white;
 }
 #top {
