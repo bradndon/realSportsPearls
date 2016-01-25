@@ -316,7 +316,7 @@ label > div {
     overflow-y: hidden;
   }
   .colorChoice {
-    height: 16.66666666%;
+    height: 17%;
   }
 }
 @media only screen and (max-device-width: 620px) {
