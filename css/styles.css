@@ -277,6 +277,21 @@ label > div {
   .image-overlay-right {
     padding-right: 50px;
   }
+  html {
+    font-size: 50%;
+  }
+  .overlay-divider {
+    width: 100px;
+    height: 5px;
+    background-color: black;
+    margin-right: 225px;
+  }
+  .big-nav-text {
+    font-size: 2.4rem;
+  }
+  .small-nav-text {
+    font-size: 1.8rem;
+  }
 }
 @media only screen and (max-width: 800px) {
   #bottom-left {
