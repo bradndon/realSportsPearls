@@ -109,6 +109,20 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   }
 
   $scope.getLabelWidth = function(){
+
+    var mq = window.matchMedia( "(max-width: 800px)" );
+    var mq4 = window.matchMedia( "(max-device-width: 800px)" );
+
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
+
+
+    if (mq2.matches || mq3.matches || mq.matches || mq4.matches){
+      return {'width': ($('#bottom--custom').first().width())/6 + 'px'};
+    }
+    var newWidth = window.innerHeight / 5
+
+    $('#content').css('width', window.innerWidth - newWidth);
     return {'width': $('#bottom--custom').first().width()/9 + 'px'};
   }
   $scope.getSpriteStyle = function(id){
@@ -295,3 +309,31 @@ pearlsApp.factory(
                return( Preloader );
            }
        );
+
+       pearlsApp.directive('resize', function ($window) {
+           return function (scope, element) {
+               var w = angular.element($window);
+               scope.getWindowDimensions = function () {
+                   return {
+                       'h': w.height(),
+                       'w': w.width()
+                   };
+               };
+               scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
+                   scope.windowHeight = newValue.h;
+                   scope.windowWidth = newValue.w;
+
+                   scope.style = function () {
+                       return {
+                           'height': (newValue.h - 100) + 'px',
+                               'width': (newValue.w - 100) + 'px'
+                       };
+                   };
+
+               }, true);
+
+               w.bind('resize', function () {
+                   scope.$apply();
+               });
+           }
+       })

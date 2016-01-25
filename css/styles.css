@@ -253,6 +253,22 @@ label > div {
   width: auto;
   height: 40%;
 }
+#bottom--custom {
+  height: 38%;
+}
+#customize-top {
+  position: relative;
+  width: 100%;
+  height: 61.5%;
+  background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat;
+  color: white;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 10px solid #191b1c;
+}
+.colorChoice {
+  height: 25%;
+}
 #bottom-left {
   background: url("../images/pearls.png")no-repeat;
   background-size: cover;
@@ -274,31 +290,7 @@ label > div {
   float: right;
   height: 100%;
 }
-@media only screen and (max-device-width: 800px) {
-  #bottom-left {
-    width: 100%;
-    border-bottom: 10px solid #191b1c;
-    border-right: none;
-  }
-  #bottom-right {
-    width: 100%;
-    float: right;
-  }
-  .image-overlay-right {
-    padding-right: 50px;
-  }
-  html {
-    font-size: 50%;
-  }
-
-  .big-nav-text {
-    font-size: 2.4rem;
-  }
-  .small-nav-text {
-    font-size: 1.8rem;
-  }
-}
-@media only screen and (max-width: 800px) {
+@media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
   #bottom-left {
     width: 100%;
     border-bottom: 10px solid #191b1c;
@@ -319,11 +311,19 @@ label > div {
   }
   .small-nav-text {
     font-size: 1.8rem;
+  }
+  #bottom--custom {
+    overflow-y: hidden;
+  }
+  .colorChoice {
+    height: 16.66666666%;
   }
 }
 @media only screen and (max-device-width: 620px) {
   #content {
     margin-top: 200px;
+    height: 90%;
+
   }
   #mobile-nav {
     display: block;
@@ -350,10 +350,14 @@ label > div {
     padding-left: 40px;
     padding-right: 0px;
   }
+  #customize-top {
+    height: 50%;
+  }
 }
 @media only screen and (max-width: 620px) {
   #content {
     margin-top: 10%;
+    height: 90%;
   }
   #mobile-nav {
     display: block;
@@ -366,5 +370,12 @@ label > div {
   }
   li a {
     font-size: 150%;
+  }
+  #bottom--custom {
+    width: 95%;
+    height: 50%;
+  }
+  #customize-top {
+    height: 50%;
   }
 }
