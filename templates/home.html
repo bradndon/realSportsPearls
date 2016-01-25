@@ -60,6 +60,7 @@ $(window).resize(function(){
       $(this).removeClass('selected');
     });
     $(this).addClass('selected');
+    $('#mobile-nav').css('height', '10%');
     $(this).parent().parent().parent().slideUp().siblings('div').slideDown();
   }
   $('.nav-link').click(clickButton);
