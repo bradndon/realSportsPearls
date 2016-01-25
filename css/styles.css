@@ -93,6 +93,16 @@ a:hover {
   font-size: 2.0rem;
   margin: 0px;
 }
+.overlay-top-text-big {
+  font-size: 3.6rem;
+  font-family: 'Lato', sans-serif;
+  margin: 0px 8px 30px 8px;
+}
+.overlay-top-text-small {
+  font-size: 3.1rem;
+  font-family: 'Lato', sans-serif;
+  margin: 30px 8px 30px 8px;
+}
 .modal {
   z-index: 2000;
   position: fixed;
@@ -332,6 +342,27 @@ label > div {
   #navigation {
     display: none;
   }
+  .overlay-top-text-big {
+    margin: 5px 0px;
+    font-size: 3.1rem;
+  }
+  .overlay-top-text-small {
+    margin: 5px 0px;
+    font-size: 2.8rem;
+  }
+  .customize {
+    font-size: 1.8rem;
+  }
+  .image-overlay-right {
+    padding-left: 40px;
+    padding-right: 0px;
+  }
+  .customize {
+    margin-right: 30px;
+  }
+  .overlay-divider {
+    margin-right: 190px;
+  }
 }
 @media only screen and (max-width: 620px) {
   #content {
@@ -346,13 +377,13 @@ label > div {
   .image-overlay-right {
     padding-left: 40px;
   }
-  .customize{
+  .customize {
     margin-right: 30px;
   }
   .overlay-divider {
     margin-right: 190px;
   }
-  li a  {
+  li a {
     font-size: 150%;
   }
 }
