@@ -59,21 +59,21 @@ $(window).resize(function(){
 
 
 
-  function clickButton(event) {
-    $('#navigation li a').each(function(){
-      $(this).removeClass('selected');
-    });
-    $(this).addClass('selected');
-  }
+  // function clickButton(event) {
+  //   $('#navigation li a').each(function(){
+  //     $(this).removeClass('selected');
+  //   });
+  //   $(this).addClass('selected');
+  // }
   function clickMobileButton(event) {
-    $('#mobile-nav li a').each(function(){
-      $(this).removeClass('selected');
-    });
-    $(this).addClass('selected');
+    // $('#mobile-nav li a').each(function(){
+    //   $(this).removeClass('selected');
+    // });
+    // $(this).addClass('selected');
     $(this).parent().parent().parent().slideUp().siblings('div').slideDown();
     $('#mobile-nav').css('height', '10%');
 
   }
-  $('.nav-link').click(clickButton);
+  // $('.nav-link').click(clickButton);
   $('.nav-link-mobile').click(clickMobileButton);
 </script>

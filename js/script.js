@@ -23,7 +23,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 }).controller('HomeCtrl', function($scope, $location) {
-
+  $('#navigation li a').each(function(){
+    $(this).removeClass('selected');
+  });
+  $('#mobile-nav li a').each(function(){
+    $(this).removeClass('selected');
+  });
+  $('.nav-home').addClass('selected');
 
 
   $scope.form = {
@@ -39,6 +45,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $location.url('/customize');
   };
 }).controller('CustomCtrl', function($scope, preloader) {
+  $('#navigation li a').each(function(){
+    $(this).removeClass('selected');
+  });
+  $('#mobile-nav li a').each(function(){
+    $(this).removeClass('selected');
+  });
+  $('.nav-customize').addClass('selected');
   // I keep track of the state of the loading images.
   $scope.isLoading = true;
   $scope.isSuccessful = false;
@@ -100,12 +113,16 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       } else if ($scope.firstChosen != -1) {
         $scope.chosenRight = subscription.val - 1;
         $scope.secondChosen = position;
-      }else {
+      } else {
         $scope.firstChosen = position;
         $scope.chosenLeft = subscription.val;
         $scope.chosenRight = subscription.val - 1;
       }
-    // });
+      if( $scope.firstChosen == -1 && $scope.secondChosen == -1) {
+        $scope.chosenLeft = -1;
+        $scope.chosenRight = -1;
+      }
+
   }
 
   $scope.getLabelWidth = function(){
@@ -153,8 +170,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
           console.info( "Percent loaded:", event.percent );
       }
   );
-  $scope.chosenRight = 0;
-  $scope.chosenLeft = 1;
+  $scope.chosenRight = -1;
+  $scope.chosenLeft = -1;
 
 
 });
