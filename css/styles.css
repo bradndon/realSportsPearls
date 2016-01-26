@@ -108,9 +108,9 @@ a:hover {
   margin: 0px 8px 15px 8px;
 }
 .overlay-custom-text-small {
-font-size: 3.1rem;
-font-family: 'Lato', sans-serif;
-margin: 15px 8px 15px 8px;
+  font-size: 3.1rem;
+  font-family: 'Lato', sans-serif;
+  margin: 15px 8px 15px 8px;
 }
 .modal {
   z-index: 2000;
@@ -233,6 +233,23 @@ label:hover {
   background-size: contain;
   background-position: center;
 }
+#buy-button {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  padding: 15px 15px 5px 15px;
+  background-color: #191b1c;
+  border: none;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 2.2rem;
+}
+#buy-button:hover {
+  cursor: pointer;
+}
+#buy-button:disabled {
+  background-color: grey;
+}
 label > div {
   border: 1px solid #979797;
   -webkit-box-sizing: border-box;
@@ -333,7 +350,6 @@ label > div {
   #content {
     margin-top: 200px;
     height: 90%;
-
   }
   #mobile-nav {
     display: block;
@@ -356,7 +372,6 @@ label > div {
   .overlay-custom-text-small {
     font-size: 1.8rem;
     margin: 5px 10px;
-
   }
   .customize {
     font-size: 1.8rem;
@@ -365,7 +380,7 @@ label > div {
   .overlay-divider {
     margin-left: 0px;
   }
-  .overlay-divider-custom{
+  .overlay-divider-custom {
     height: 2px;
     width: 50px;
   }

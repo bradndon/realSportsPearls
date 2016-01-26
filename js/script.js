@@ -122,9 +122,11 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
         $scope.chosenLeft = -1;
         $scope.chosenRight = -1;
         $('#customize-overlay').css('opacity', 1.0);
-
+        $("#buy-button").prop('disabled', true);
       } else {
         $('#customize-overlay').css('opacity', 0.5);
+        $("#buy-button").prop('disabled', false);
+
       }
 
   }
