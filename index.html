@@ -1,5 +1,6 @@
 <html ng-app='pearlsApp'>
-<head >
+
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -13,97 +14,95 @@
 </head>
 
 <body>
-  <div id="container">
-    <div role="navigation" id="navigation">
-      <ul>
-        <li style="background-color: #24292E;">
-          <img id="logo" src="images/logo.png">
-        </li>
-        <li>
-          <a href="/" class="nav-link selected nav-home">
-            <p class="big-nav-text">START FROM</p>
-            <p class="small-nav-text">THE BEGINNING</p>
-          </a>
-        </li>
-        <li>
-          <a href="/customize" class="nav-link nav-customize">
-            <p class="big-nav-text">CUSTOMIZE</p>
-            <p class="small-nav-text">YOUR NECKLACE</p>
-          </a>
-        </li>
-        <li>
-          <a href="/about" class="nav-link nav-about">
-            <p class="big-nav-text">LEARN</p>
-            <p class="small-nav-text">ABOUT US</p>
-          </a>
-        </li>
-        <li>
-          <a href="" onclick="$('.modal').fadeIn(200);">
-            <p class="big-nav-text">DROP US</p>
-            <p class="small-nav-text">A LINE</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div role="navigation" id="mobile-nav">
-      <div style="width:100%; height: 100%; background-color:#191b1c; text-align: center; color: white; font-family:'Lato', sans-serif; font-size: 1.6rem;">
-        <button value="asdf" style="float: left;" onclick="$('#mobile-nav').css('height', window.innerHeight);$(this).parent().slideUp().siblings('div').slideDown();"></button>
-        REAL SPORTS PEARLS
-      </div>
-    <div >
-
-      <ul>
-        <li>
-          <a href="/" class="nav-link-mobile selected nav-home" >
-            <p class="big-nav-text">START FROM</p>
-            <p class="small-nav-text">THE BEGINNING</p>
-          </a>
-        </li>
-        <li>
-          <a href="/customize" class="nav-link-mobile nav-customize">
-            <p class="big-nav-text">CUSTOMIZE</p>
-            <p class="small-nav-text">YOUR NECKLACE</p>
-          </a>
-        </li>
-        <li>
-          <a href="/about" class="nav-link-mobile nav-about">
-            <p class="big-nav-text">LEARN</p>
-            <p class="small-nav-text">ABOUT US</p>
-          </a>
-        </li>
-        <li>
-          <a href="" onclick="$('.modal').fadeIn(200);$(this).parent().parent().parent().slideUp().siblings('div').slideDown(); $('#mobile-nav').css('height', '10%');">
-            <p class="big-nav-text">DROP US</p>
-            <p class="small-nav-text">A LINE</p>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <ul class="nav nav--main">
+    <li class="nav__item nav__item--logobox">
+      <img class="nav__logo" src="images/logo.png">
+    </li>
+    <li class="nav__item">
+      <a href="/" class="nav__link nav-home">
+        <p class="nav__text">START FROM</p>
+        <p class="nav__text nav__text--small">THE BEGINNING</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="/customize" class="nav__link nav-customize">
+        <p class="nav__text">CUSTOMIZE</p>
+        <p class="nav__text nav__text--small">YOUR NECKLACE</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="/about" class="nav__link nav-about">
+        <p class="nav__text">LEARN</p>
+        <p class="nav__text nav__text--small">ABOUT US</p>
+      </a>
+    </li>
+    <li class="nav__item">
+      <a href="" class="nav__link" onclick="$('.modal').fadeIn(200);">
+        <p class="nav__text">DROP US</p>
+        <p class="nav__text nav__text--small">A LINE</p>
+      </a>
+    </li>
+  </ul>
+  <div class='nav__topbar'>
+    <button class='nav__expandbtn' onclick="$('.nav--mobile').slideDown();">Menu</button>
+    <p class='nav__title'>REAL SPORTS PEARLS</p>
   </div>
-    <div id="content" ng-view>
+  <ul class="nav nav--mobile">
+    <li class="nav__item nav__item--mobile">
+      <a href="/" class="nav__link nav__link--mobile nav-home">
+        <p class="nav__text">START FROM</p>
+        <p class="nav__text nav__text--small">THE BEGINNING</p>
+      </a>
+    </li>
+    <li class="nav__item nav__item--mobile">
+      <a href="/customize" class="nav__link nav__link--mobile nav-customize">
+        <p class="nav__text">CUSTOMIZE</p>
+        <p class="nav__text nav__text--small">YOUR NECKLACE</p>
+      </a>
+    </li>
+    <li class="nav__item nav__item--mobile">
+      <a href="/about" class="nav__link nav__link--mobile nav-about">
+        <p class="nav__text">LEARN</p>
+        <p class="nav__text nav__text--small">ABOUT US</p>
+      </a>
+    </li>
+    <li class="nav__item nav__item--mobile">
+      <a href="" class="nav__link nav__link--mobile" onclick="$('.modal').fadeIn(200);$(this).parent().parent().slideUp();">
+        <p class="nav__text">DROP US</p>
+        <p class="nav__text nav__text--small">A LINE</p>
+      </a>
+    </li>
+  </ul>
+  <div id="content" ng-view>
 
 
 
-    </div>
-    <div class="modal" >
-        <div id="contact-overlay">
-          <svg class="modal-close-button" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg"onclick="$('.modal').fadeOut(200);">
-            <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
-            <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
-          </svg><br>
-          <form id="contact-form">
-            <label for="name">NAME</label><br>
-            <input class="form-text" id="name" type="text"></input><br>
-            <label for="email">EMAIL</label<br>
-            <input class="form-text" id="email" type="text"></input><br>
-            <label for="message">MESSAGE</label><br>
-            <textarea class="form-text" id="message" rows="7" cols="50"></textarea><br>
-            <input type="submit" class="customize--small-margins" value="CONTACT US">
-          </form>
-        </div>
+  </div>
+  <div class="modal">
+    <div class="contactform">
+      <svg class="contactform__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);">
+        <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
+        <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
+      </svg>
+      <br>
+      <form class="contactform__form">
+        <label for="name">NAME</label>
+        <br>
+        <input class="contactform__text" id="name" type="text"></input>
+        <br>
+        <label for="email">EMAIL</label<br>
+          <input class="contactform__text" id="email" type="text"></input>
+          <br>
+          <label for="message">MESSAGE</label>
+          <br>
+          <textarea class="contactform__text" id="message" rows="7" cols="50"></textarea>
+          <br>
+          <input type="submit" class="contactform__submitbtn" value="CONTACT US">
+      </form>
     </div>
   </div>
 
 
 </body>
+
 </html>

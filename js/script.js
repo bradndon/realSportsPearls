@@ -23,13 +23,10 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 }).controller('HomeCtrl', function($scope, $location) {
-  $('#navigation li a').each(function(){
-    $(this).removeClass('selected');
+  $('.nav__link').each(function(){
+    $(this).removeClass('nav__link--selected');
   });
-  $('#mobile-nav li a').each(function(){
-    $(this).removeClass('selected');
-  });
-  $('.nav-home').addClass('selected');
+  $('.nav-home').addClass('nav__link--selected');
 
 
   $scope.form = {
@@ -38,20 +35,14 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   };
 
   $scope.goCustom = function() {
-    $('li a').each(function() {
-      $(this).removeClass('selected');
-    });
-    $('.nav-customize').addClass('selected');
     $location.url('/customize');
   };
 }).controller('CustomCtrl', function($scope, preloader) {
-  $('#navigation li a').each(function(){
-    $(this).removeClass('selected');
+  $('.nav__link').each(function(){
+    $(this).removeClass('nav__link--selected');
   });
-  $('#mobile-nav li a').each(function(){
-    $(this).removeClass('selected');
-  });
-  $('.nav-customize').addClass('selected');
+
+  $('.nav-customize').addClass('nav__link--selected');
   // I keep track of the state of the loading images.
   $scope.isLoading = true;
   $scope.isSuccessful = false;
@@ -88,7 +79,6 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.updateSelection = function(position, entities) {
     // angular.forEach(entities, function(subscription, index) {
       subscription = entities[position];
-      console.log(subscription);
       if(subscription.checked){
         if(position == $scope.secondChosen){
           $scope.secondChosen = -1;
@@ -141,18 +131,14 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
 
     if (mq2.matches || mq3.matches || mq.matches || mq4.matches){
-      return {'width': ($('#bottom--custom').first().width())/6 + 'px'};
+      return {'width': ($('#bottom--custom').width()/6) + 'px'};
     }
     var newWidth = window.innerHeight / 5
 
     $('#content').css('width', window.innerWidth - newWidth);
-    return {'width': $('#bottom--custom').first().width()/9 + 'px'};
+    return {'width': $('#bottom--custom').width()/9 + 'px'};
   }
   $scope.getSpriteStyle = function(id){
-    var fullWidth = 361;
-    var fullHeight = 226.026;
-
-    var ratio = (($('.rondeles').first().width()))/fullWidth;
     return 'url(' + $scope.imageLocations[73+id] + ')';}
   $scope.getImage = function(id){
     return "url(" + $scope.imageLocations[id] + ")";}
@@ -162,7 +148,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
           // Loading was successful.
           $scope.isLoading = false;
           $scope.isSuccessful = true;
-          console.info( "Preload Successful" );
+          // console.info( "Preload Successful" );
       },
       function handleReject( imageLocation ) {
           // Loading failed on at least one image.
@@ -173,7 +159,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       },
       function handleNotify( event ) {
           $scope.percentLoaded = event.percent;
-          console.info( "Percent loaded:", event.percent );
+          // console.info( "Percent loaded:", event.percent );
       }
   );
   $scope.chosenRight = -1;
