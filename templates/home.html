@@ -1,57 +1,61 @@
-<div id="top">
-  <div class="image-overlay-right">
-    <p class="overlay-top-text-big">RISUS INCEPTOS PHARETRA MAGASS</p>
-    <div class="overlay-divider"></div>
-    <p class="overlay-top-text-small">Total synergy between power, comfort and design.</p>
-    <button class="customize"  ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
+<div class="top top--home">
+  <div class="top__overlay top__overlay--home">
+    <p class="top__text">RISUS INCEPTOS PHARETRA MAGASS</p>
+    <div class="top__divider"></div>
+    <p class="top__text top__text--small">Total synergy between power, comfort and design.</p>
+    <button class="top__customizebtn" ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
   </div>
 </div>
-<div id="bottom">
-  <div id="bottom-left"><div id="overlay-div"><p class="overlay-text-big">OVER 30 COLORS</p><p class="overlay-text-small">TO CHOOSE FROM</p></div></div>
-  <div id="bottom-right"></div>
+<div class="bottom">
+  <div class="bottom__left">
+    <div class="bottom__overlay">
+      <p class="bottom__text">OVER 30 COLORS</p>
+      <p class="bottom__text bottom__text--small">TO CHOOSE FROM</p>
+    </div>
+  </div>
+  <div class="bottom__right"></div>
 </div>
 <script>
-$('.modal').hide();
+  $('.modal').hide();
 
-$(window).resize(function(){
-  var div = $('.nav--main');
-  var mq2 = window.matchMedia("(max-width: 620px)");
-  var mq3 = window.matchMedia("(max-device-width: 620px)");
+  $(window).resize(function() {
+    var div = $('.nav--main');
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
 
-  var newWidth = window.innerHeight / 5
-  div.css('width', newWidth);
-  var content = $('#content');
-  if ($("body").height() > $(window).height()) {
-    content.css('width', window.innerWidth + 15 - newWidth );
-  } else {
-    content.css('width', window.innerWidth  - newWidth );
+    var newWidth = window.innerHeight / 5
+    div.css('width', newWidth);
+    var content = $('#content');
+    if ($("body").height() > $(window).height()) {
+      content.css('width', window.innerWidth + 15 - newWidth);
+    } else {
+      content.css('width', window.innerWidth - newWidth);
 
-  }
- if (mq2.matches || mq3.matches){
+    }
+    if (mq2.matches || mq3.matches) {
 
-  content.css('width', window.innerWidth);
-}
-});
+      content.css('width', window.innerWidth);
+    }
+  });
   $(document).ready(function() {
-    var mq = window.matchMedia( "(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)" );
+    var mq = window.matchMedia("(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)");
     var mq2 = window.matchMedia("(max-width: 620px)");
     var mq3 = window.matchMedia("(max-device-width: 620px)");
     var div = $('.nav--main');
     var newWidth = window.innerHeight / 5
     div.css('width', newWidth);
     var content = $('#content');
-    $('#bottom').css('height',  newWidth * 2);
     if (mq.matches) {
-      content.css('width', window.innerWidth - newWidth );
-    } else if (mq2.matches || mq3.matches){
+      content.css('width', window.innerWidth - newWidth);
+    } else if (mq2.matches || mq3.matches) {
 
       content.css('width', window.innerWidth);
 
-    }else {
+    } else {
       if ($("body").height() > $(window).height()) {
-        content.css('width', window.innerWidth -15 - newWidth );
+        content.css('width', window.innerWidth - 15 - newWidth);
       } else {
-        content.css('width', window.innerWidth  - newWidth );
+        content.css('width', window.innerWidth - newWidth);
 
       }
     }

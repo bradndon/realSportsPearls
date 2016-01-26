@@ -1,0 +1,90 @@
+.bottom {
+  width: auto;
+  height: 38%;
+}
+.bottom--custom {
+  background-color:#CECECE;
+}
+.bottom__left {
+  background: url("../images/pearls.png")no-repeat;
+  background-size: cover;
+  background-position: center;
+  float: left;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  border-right: 3px solid #191b1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom__right {
+  background: url("../images/mannequin.png")no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 50%;
+  float: right;
+  height: 100%;
+}
+.bottom__overlay {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  background-color: rgba(25, 27, 28, 0.84);
+  padding: 10px 25px 10px 25px;
+  color: white;
+}
+.bottom__text{
+  font-size: 2.8rem;
+  margin: 0px;
+}
+.bottom__text--small {
+  font-size: 2.0rem;
+}
+.bottom__colors {
+  height: 25%;
+}
+.bottom__rondelechk:checked + .bottom__rondelelbl > .bottom__rondelectr {
+  background-color: white;
+}
+.bottom__rondelechk {
+  display: none;
+}
+.bottom__rondelectr {
+  border: 1px solid #979797;
+  box-sizing: border-box;
+  margin: 0px;
+  background-color: #CECECE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom__rondeleimg {
+  width: 60%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+@media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
+  .bottom__left {
+    width: 100%;
+    border-bottom: 10px solid #191b1c;
+    border-right: none;
+  }
+  .bottom__right {
+    width: 100%;
+    float: right;
+  }
+  .bottom--custom {
+    overflow-y: hidden;
+  }
+  .bottom__colors {
+    height: 17%;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .bottom--custom {
+    height: 50%;
+  }
+}

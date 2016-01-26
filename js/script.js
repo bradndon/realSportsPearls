@@ -1,8 +1,5 @@
 var pearlsApp = angular.module('pearlsApp', ['ngRoute']);
 
-$('.modal').hide();
-
-
 pearlsApp.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
@@ -111,11 +108,11 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       if( $scope.firstChosen == -1 && $scope.secondChosen == -1) {
         $scope.chosenLeft = -1;
         $scope.chosenRight = -1;
-        $('#customize-overlay').css('opacity', 1.0);
-        $("#buy-button").prop('disabled', true);
+        $('.top__overlay').css('opacity', 1.0);
+        $(".top__buybtn").prop('disabled', true);
       } else {
-        $('#customize-overlay').css('opacity', 0.5);
-        $("#buy-button").prop('disabled', false);
+        $('.top__overlay').css('opacity', 0.3);
+        $(".top__buybtn").prop('disabled', false);
 
       }
 
@@ -131,12 +128,12 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
 
     if (mq2.matches || mq3.matches || mq.matches || mq4.matches){
-      return {'width': ($('#bottom--custom').width()/6) + 'px'};
+      return {'width': ($('.bottom--custom').width()/6) + 'px'};
     }
     var newWidth = window.innerHeight / 5
 
     $('#content').css('width', window.innerWidth - newWidth);
-    return {'width': $('#bottom--custom').width()/9 + 'px'};
+    return {'width': $('.bottom--custom').width()/9 + 'px'};
   }
   $scope.getSpriteStyle = function(id){
     return 'url(' + $scope.imageLocations[73+id] + ')';}
