@@ -9,10 +9,14 @@
     <div id="customize-top">
       <div ng-style="{'background-image': getImage(chosenLeft)}" class="necklace-image"></div>
       <div ng-style="{'background-image': getImage(chosenRight)}" class="necklace-image"></div>
-
+      <div id="customize-overlay" style="position: absolute; bottom:0; left: 0; color: black; height: 60%; max-width: 400px; min-width: 200px; display:flex; flex-direction: column; justify-content: flex-end; ma">
+        <p class="overlay-custom-text-big">FIND YOUR<br>PERFECT PAIR</p>
+        <div class="overlay-divider-custom"></div>
+        <p class="overlay-custom-text-small">Choose two colors<br>below to get started</p>
+      </div>
+      <button style="position: absolute; bottom: 0; right: 20px; padding: 15px 15px 5px 15px; background-color:#191b1c; border: none; color: white; font-family: 'Lato', sans-serif; font-size: 2.2rem;">BUY IT NOW</button>
 
     </div>
-    <div id=extra style="display:none;"></div>
     <!-- <div  ng-repeat="chk in radioRight">
       <input type="radio" id="UNIQUELABEL{{$id}}_1" style="display: none;" name="right" ng-model="$parent.chosenRight" ng-value="chk.val" />
       <label for="UNIQUELABEL{{$id}}_1">

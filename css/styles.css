@@ -102,6 +102,16 @@ a:hover {
   font-family: 'Lato', sans-serif;
   margin: 30px 8px 30px 8px;
 }
+.overlay-custom-text-big {
+  font-size: 3.6rem;
+  font-family: 'Lato', sans-serif;
+  margin: 0px 8px 15px 8px;
+}
+.overlay-custom-text-small {
+font-size: 3.1rem;
+font-family: 'Lato', sans-serif;
+margin: 15px 8px 15px 8px;
+}
 .modal {
   z-index: 2000;
   position: fixed;
@@ -235,7 +245,7 @@ label > div {
 [type="checkbox"]:checked + label > div {
   background-color: white;
 }
-.overlay-divider {
+.overlay-divider, .overlay-divider-custom {
   width: 100px;
   height: 5px;
   background-color: black;
@@ -336,8 +346,17 @@ label > div {
     font-size: 3.1rem;
   }
   .overlay-top-text-small {
-    margin: 5px 0px;
+    margin: 5px 5px;
     font-size: 2.8rem;
+  }
+  .overlay-custom-text-big {
+    font-size: 2.4rem;
+    margin: 5px 10px;
+  }
+  .overlay-custom-text-small {
+    font-size: 1.8rem;
+    margin: 5px 10px;
+
   }
   .customize {
     font-size: 1.8rem;
@@ -345,6 +364,10 @@ label > div {
   }
   .overlay-divider {
     margin-left: 0px;
+  }
+  .overlay-divider-custom{
+    height: 2px;
+    width: 50px;
   }
   .image-overlay-right {
     padding-left: 40px;

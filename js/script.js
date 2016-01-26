@@ -121,6 +121,10 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       if( $scope.firstChosen == -1 && $scope.secondChosen == -1) {
         $scope.chosenLeft = -1;
         $scope.chosenRight = -1;
+        $('#customize-overlay').css('opacity', 1.0);
+
+      } else {
+        $('#customize-overlay').css('opacity', 0.5);
       }
 
   }
