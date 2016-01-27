@@ -19,327 +19,362 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     });
 
   $locationProvider.html5Mode(true);
-}).controller('HomeCtrl', function($scope, $location) {
-  $('.nav__link').each(function(){
+}).controller('HomeCtrl', function($scope, $location, resize) {
+
+  $('.nav__link--mobile').click(function(event){ $(this).parent().parent().slideUp();});
+
+  resize.onstart();
+
+  $(window).on("resize.doResize", resize.resize);
+  $scope.$on("$destroy", function() {
+    $(window).off("resize.doResize"); //remove the handler added earlier
+  });
+
+  $('.nav__link').each(function() {
     $(this).removeClass('nav__link--selected');
   });
   $('.nav-home').addClass('nav__link--selected');
 
-
-  $scope.form = {
-    username: null,
-    password: null
-  };
-
   $scope.goCustom = function() {
     $location.url('/customize');
   };
-}).controller('CustomCtrl', function($scope, preloader) {
-  $('.nav__link').each(function(){
+}).controller('CustomCtrl', function($scope, preloader, resize, Customizer) {
+
+  $('.nav__link--mobile').click(function(event){ $(this).parent().parent().slideUp();});
+  resize.onstart();
+
+  $(window).on("resize.doResize", resize.resize);
+  $scope.$on("$destroy", function() {
+    $(window).off("resize.doResize"); //remove the handler added earlier
+  });
+
+  $('.nav__link').each(function() {
     $(this).removeClass('nav__link--selected');
   });
 
   $('.nav-customize').addClass('nav__link--selected');
+
+  $scope.getLabelWidth = function() {
+    var mq = window.matchMedia("(max-width: 800px)");
+    var mq4 = window.matchMedia("(max-device-width: 800px)");
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
+    if (mq2.matches || mq3.matches || mq.matches || mq4.matches) {
+      return {
+        'width': ($('.bottom--custom').width() / 6) + 'px'
+      };
+    }
+    var newWidth = window.innerHeight / 5
+    $('#content').css('width', window.innerWidth - newWidth);
+    return {
+      'width': $('.bottom--custom').width() / 9 + 'px'
+    };
+  }
+  $scope.getSpriteStyle = function(id) {
+    return 'url(' + $scope.imageLocations[72 + id] + ')';
+  }
+  $scope.getImage = function(id) {
+    return "url(" + $scope.imageLocations[id] + ")";
+  }
+  $scope.updateSelection = function(position, entities) {
+    Customizer.updateSelection(position, entities);
+    $scope.chosenLeft = Customizer.getLeft();
+    $scope.chosenRight = Customizer.getRight();
+  }
+  $scope.chosenRight = Customizer.getLeft();
+  $scope.chosenLeft = Customizer.getRight();
+  console.log($scope.chosenRight);
   // I keep track of the state of the loading images.
   $scope.isLoading = true;
   $scope.isSuccessful = false;
   $scope.percentLoaded = 0;
-  // I am the image SRC values to preload and display./
-  // --
-  // NOTE: "cache" attribute is to prevent images from caching in the
-  // browser (for the sake of the demo).
+  // I am the image SRC values to preload and display.
   $scope.imageLocations = [];
-  $scope.radioRight = [];
   $scope.radioLeft = [];
-  for (var i = 0; i < 36; i++){
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i+1) + "a.png");
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i+1) + "b.png");
-    $scope.radioRight.push({label: ("Rondele " + (i+1)), val: 2*i, img: i*231, checked: false});
-    $scope.radioLeft.push({label: ("Rondele " + (i+1)), val: 2*i+1, img: i*231, checked: false});
-  }
-  $scope.imageLocations.push(  "../images/Rondeles_Necklace/necklace_base.jpg");
-  for (var i = 0; i < 36; i++){
-    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i+1) + ".png");
-  }
-  $scope.numChecked = 0;
-  $scope.CheckAmount = function(){
-    $scope.numChecked++;
-    if ($scope.numChecked > 2){
-      console.log($scope.numChecked);
-      $scope.numChecked--;
-      return false;
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+    if (i * 2 == $scope.chosenLeft || 2 * i + 1 == $scope.chosenRight) {
+      $scope.radioLeft.push({
+        val: 2 * i + 1,
+        checked: true
+      });
+    } else {
+      $scope.radioLeft.push({
+        val: 2 * i + 1,
+        checked: false
+      });
     }
-    return true;
   }
-  $scope.firstChosen = -1;
-  $scope.secondChosen = -1
-  $scope.updateSelection = function(position, entities) {
-    // angular.forEach(entities, function(subscription, index) {
-      subscription = entities[position];
-      if(subscription.checked){
-        if(position == $scope.secondChosen){
-          $scope.secondChosen = -1;
-          $scope.chosenRight = $scope.chosenLeft - 1;
-        } else if (position == $scope.firstChosen && $scope.secondChosen != -1){
-          $scope.firstChosen = $scope.secondChosen;
-          $scope.chosenLeft = $scope.chosenRight + 1;
-          $scope.secondChosen = -1;
-        } else {
-          $scope.firstChosen = -1;
-          $scope.chosenLeft = 1;
-          $scope.chosenRight = 0;
-
-        }
-      } else if($scope.secondChosen != -1) {
-        $scope.chosenLeft = $scope.chosenRight + 1;
-        $scope.chosenRight = subscription.val - 1;
-        entities[$scope.firstChosen].checked = false;
-        $scope.firstChosen = $scope.secondChosen;
-        $scope.secondChosen = position;
-
-      } else if ($scope.firstChosen != -1) {
-        $scope.chosenRight = subscription.val - 1;
-        $scope.secondChosen = position;
-      } else {
-        $scope.firstChosen = position;
-        $scope.chosenLeft = subscription.val;
-        $scope.chosenRight = subscription.val - 1;
-      }
-      if( $scope.firstChosen == -1 && $scope.secondChosen == -1) {
-        $scope.chosenLeft = -1;
-        $scope.chosenRight = -1;
-        $('.top__overlay').css('opacity', 1.0);
-        $(".top__buybtn").prop('disabled', true);
-      } else {
-        $('.top__overlay').css('opacity', 0.3);
-        $(".top__buybtn").prop('disabled', false);
-
-      }
-
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
   }
-
-  $scope.getLabelWidth = function(){
-
-    var mq = window.matchMedia( "(max-width: 800px)" );
-    var mq4 = window.matchMedia( "(max-device-width: 800px)" );
-
-    var mq2 = window.matchMedia("(max-width: 620px)");
-    var mq3 = window.matchMedia("(max-device-width: 620px)");
-
-
-    if (mq2.matches || mq3.matches || mq.matches || mq4.matches){
-      return {'width': ($('.bottom--custom').width()/6) + 'px'};
-    }
-    var newWidth = window.innerHeight / 5
-
-    $('#content').css('width', window.innerWidth - newWidth);
-    return {'width': $('.bottom--custom').width()/9 + 'px'};
-  }
-  $scope.getSpriteStyle = function(id){
-    return 'url(' + $scope.imageLocations[73+id] + ')';}
-  $scope.getImage = function(id){
-    return "url(" + $scope.imageLocations[id] + ")";}
+  $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
   // Preload the images; then, update display when returned.
-  preloader.preloadImages( $scope.imageLocations ).then(
-      function handleResolve( imageLocations ) {
-          // Loading was successful.
-          $scope.isLoading = false;
-          $scope.isSuccessful = true;
-          // console.info( "Preload Successful" );
-      },
-      function handleReject( imageLocation ) {
-          // Loading failed on at least one image.
-          $scope.isLoading = false;
-          $scope.isSuccessful = false;
-          console.error( "Image Failed", imageLocation );
-          console.info( "Preload Failure" );
-      },
-      function handleNotify( event ) {
-          $scope.percentLoaded = event.percent;
-          // console.info( "Percent loaded:", event.percent );
-      }
+  preloader.preloadImages($scope.imageLocations).then(
+    function handleResolve(imageLocations) {
+      // Loading was successful.
+      $scope.isLoading = false;
+      $scope.isSuccessful = true;
+    },
+    function handleReject(imageLocation) {
+      // Loading failed on at least one image.
+      $scope.isLoading = false;
+      $scope.isSuccessful = false;
+      console.error("Image Failed", imageLocation);
+      console.info("Preload Failure");
+    },
+    function handleNotify(event) {
+      $scope.percentLoaded = event.percent;
+    }
   );
-  $scope.chosenRight = -1;
-  $scope.chosenLeft = -1;
+});
+pearlsApp.factory("resize", function() {
+  return {
+    resize: function() {
+      var div = $('.nav--main');
 
+      var mq2 = window.matchMedia("(max-width: 620px)");
+      var mq3 = window.matchMedia("(max-device-width: 620px)");
 
+      var newWidth = window.innerHeight / 5
+      div.css('width', newWidth);
+      var content = $('#content');
+      if (document.body.scrollHeight > document.body.clientHeight) {
+        content.css('width', window.innerWidth - 15 - newWidth);
+      } else {
+        content.css('width', window.innerWidth - newWidth);
+      }
+      if (mq2.matches || mq3.matches) {
+        content.css('width', window.innerWidth);
+      }
+    },
+    onstart: function() {
+      var mq = window.matchMedia("(max-width: 800px)");
+      var mq4 = window.matchMedia("(max-device-width: 800px)");
+      var mq2 = window.matchMedia("(max-width: 620px)");
+      var mq3 = window.matchMedia("(max-device-width: 620px)");
+      var div = $('.nav--main');
+      var newWidth = window.innerHeight / 5
+      div.css('width', newWidth);
+      var content = $('#content');
+      $('#bottom').css('height', newWidth * 2);
+      if (document.body.scrollHeight > document.body.clientHeight && !(mq.matches || mq4.matches)) {
+        content.css('width', window.innerWidth - 15 - newWidth);
+      } else {
+        content.css('width', window.innerWidth - newWidth);
+      }
+      if (mq2.matches || mq3.matches) {
+        if (document.body.scrollHeight > document.body.clientHeight) {
+          content.css('width', window.innerWidth);
+        } else {
+          content.css('width', window.innerWidth);
+        }
+      }
+    }
+  }
 });
 
+pearlsApp.service("Customizer", function() {
+  var firstChosen = -1;
+  var secondChosen = -1
+  var chosenLeft = -1;
+  var chosenRight = -1;
+  this.getLeft = function() {
+    return chosenLeft;
+  }
+  this.getRight = function() {
+    return chosenRight;
+  }
+  this.updateSelection = function(position, entities) {
+    // angular.forEach(entities, function(subscription, index) {
+    subscription = entities[position];
+    if (subscription.checked) {
+      if (position == secondChosen) {
+        secondChosen = -1;
+        chosenRight = chosenLeft - 1;
+      } else if (position == firstChosen && secondChosen != -1) {
+        firstChosen = secondChosen;
+        chosenLeft = chosenRight + 1;
+        secondChosen = -1;
+      } else {
+        firstChosen = -1;
+        chosenLeft = 1;
+        chosenRight = 0;
+      }
+    } else if (secondChosen != -1) {
+      chosenLeft = chosenRight + 1;
+      chosenRight = subscription.val - 1;
+      entities[firstChosen].checked = false;
+      firstChosen = secondChosen;
+      secondChosen = position;
+    } else if (firstChosen != -1) {
+      chosenRight = subscription.val - 1;
+      secondChosen = position;
+    } else {
+      firstChosen = position;
+      chosenLeft = subscription.val;
+      chosenRight = subscription.val - 1;
+    }
+    if (firstChosen == -1 && secondChosen == -1) {
+      chosenLeft = -1;
+      chosenRight = -1;
+      $('.top__overlay').css('opacity', 1.0);
+      $(".top__buybtn").prop('disabled', true);
+    } else {
+      $('.top__overlay').css('opacity', 0.3);
+      $(".top__buybtn").prop('disabled', false);
+    }
+  }
+})
+
+//from http://www.bennadel.com/blog/2597-preloading-images-in-angularjs-with-promises.htm
 pearlsApp.factory(
-           "preloader",
-           function( $q, $rootScope ) {
-               // I manage the preloading of image objects. Accepts an array of image URLs.
-               function Preloader( imageLocations ) {
-                   // I am the image SRC values to preload.
-                   this.imageLocations = imageLocations;
-                   // As the images load, we'll need to keep track of the load/error
-                   // counts when announing the progress on the loading.
-                   this.imageCount = this.imageLocations.length;
-                   this.loadCount = 0;
-                   this.errorCount = 0;
-                   // I am the possible states that the preloader can be in.
-                   this.states = {
-                       PENDING: 1,
-                       LOADING: 2,
-                       RESOLVED: 3,
-                       REJECTED: 4
-                   };
-                   // I keep track of the current state of the preloader.
-                   this.state = this.states.PENDING;
-                   // When loading the images, a promise will be returned to indicate
-                   // when the loading has completed (and / or progressed).
-                   this.deferred = $q.defer();
-                   this.promise = this.deferred.promise;
-               }
-               // ---
-               // STATIC METHODS.
-               // ---
-               // I reload the given images [Array] and return a promise. The promise
-               // will be resolved with the array of image locations.
-               Preloader.preloadImages = function( imageLocations ) {
-                   var preloader = new Preloader( imageLocations );
-                   return( preloader.load() );
-               };
-               // ---
-               // INSTANCE METHODS.
-               // ---
-               Preloader.prototype = {
-                   // Best practice for "instnceof" operator.
-                   constructor: Preloader,
-                   // ---
-                   // PUBLIC METHODS.
-                   // ---
-                   // I determine if the preloader has started loading images yet.
-                   isInitiated: function isInitiated() {
-                       return( this.state !== this.states.PENDING );
-                   },
-                   // I determine if the preloader has failed to load all of the images.
-                   isRejected: function isRejected() {
-                       return( this.state === this.states.REJECTED );
-                   },
-                   // I determine if the preloader has successfully loaded all of the images.
-                   isResolved: function isResolved() {
-                       return( this.state === this.states.RESOLVED );
-                   },
-                   // I initiate the preload of the images. Returns a promise.
-                   load: function load() {
-                       // If the images are already loading, return the existing promise.
-                       if ( this.isInitiated() ) {
-                           return( this.promise );
-                       }
-                       this.state = this.states.LOADING;
-                       for ( var i = 0 ; i < this.imageCount ; i++ ) {
-                           this.loadImageLocation( this.imageLocations[ i ] );
-                       }
-                       // Return the deferred promise for the load event.
-                       return( this.promise );
-                   },
-                   // ---
-                   // PRIVATE METHODS.
-                   // ---
-                   // I handle the load-failure of the given image location.
-                   handleImageError: function handleImageError( imageLocation ) {
-                       this.errorCount++;
-                       // If the preload action has already failed, ignore further action.
-                       if ( this.isRejected() ) {
-                           return;
-                       }
-                       this.state = this.states.REJECTED;
-                       this.deferred.reject( imageLocation );
-                   },
-                   // I handle the load-success of the given image location.
-                   handleImageLoad: function handleImageLoad( imageLocation ) {
-                       this.loadCount++;
-                       // If the preload action has already failed, ignore further action.
-                       if ( this.isRejected() ) {
-                           return;
-                       }
-                       // Notify the progress of the overall deferred. This is different
-                       // than Resolving the deferred - you can call notify many times
-                       // before the ultimate resolution (or rejection) of the deferred.
-                       this.deferred.notify({
-                           percent: Math.ceil( this.loadCount / this.imageCount * 100 ),
-                           imageLocation: imageLocation
-                       });
-                       // If all of the images have loaded, we can resolve the deferred
-                       // value that we returned to the calling context.
-                       if ( this.loadCount === this.imageCount ) {
-                           this.state = this.states.RESOLVED;
-                           this.deferred.resolve( this.imageLocations );
-                       }
-                   },
-                   // I load the given image location and then wire the load / error
-                   // events back into the preloader instance.
-                   // --
-                   // NOTE: The load/error events trigger a $digest.
-                   loadImageLocation: function loadImageLocation( imageLocation ) {
-                       var preloader = this;
-                       // When it comes to creating the image object, it is critical that
-                       // we bind the event handlers BEFORE we actually set the image
-                       // source. Failure to do so will prevent the events from proper
-                       // triggering in some browsers.
-                       var image = $( new Image() )
-                           .load(
-                               function( event ) {
-                                   // Since the load event is asynchronous, we have to
-                                   // tell AngularJS that something changed.
-                                   $rootScope.$apply(
-                                       function() {
-                                           preloader.handleImageLoad( event.target.src );
-                                           // Clean up object reference to help with the
-                                           // garbage collection in the closure.
-                                           preloader = image = event = null;
-                                       }
-                                   );
-                               }
-                           )
-                           .error(
-                               function( event ) {
-                                   // Since the load event is asynchronous, we have to
-                                   // tell AngularJS that something changed.
-                                   $rootScope.$apply(
-                                       function() {
-                                           preloader.handleImageError( event.target.src );
-                                           // Clean up object reference to help with the
-                                           // garbage collection in the closure.
-                                           preloader = image = event = null;
-                                       }
-                                   );
-                               }
-                           )
-                           .prop( "src", imageLocation )
-                       ;
-                   }
-               };
-               // Return the factory instance.
-               return( Preloader );
-           }
-       );
-
-       pearlsApp.directive('resize', function ($window) {
-           return function (scope, element) {
-               var w = angular.element($window);
-               scope.getWindowDimensions = function () {
-                   return {
-                       'h': w.height(),
-                       'w': w.width()
-                   };
-               };
-               scope.$watch(scope.getWindowDimensions, function (newValue, oldValue) {
-                   scope.windowHeight = newValue.h;
-                   scope.windowWidth = newValue.w;
-
-                   scope.style = function () {
-                       return {
-                           'height': (newValue.h - 100) + 'px',
-                               'width': (newValue.w - 100) + 'px'
-                       };
-                   };
-
-               }, true);
-
-               w.bind('resize', function () {
-                   scope.$apply();
-               });
-           }
-       })
+  "preloader",
+  function($q, $rootScope) {
+    // I manage the preloading of image objects. Accepts an array of image URLs.
+    function Preloader(imageLocations) {
+      // I am the image SRC values to preload.
+      this.imageLocations = imageLocations;
+      // As the images load, we'll need to keep track of the load/error
+      // counts when announing the progress on the loading.
+      this.imageCount = this.imageLocations.length;
+      this.loadCount = 0;
+      this.errorCount = 0;
+      // I am the possible states that the preloader can be in.
+      this.states = {
+        PENDING: 1,
+        LOADING: 2,
+        RESOLVED: 3,
+        REJECTED: 4
+      };
+      // I keep track of the current state of the preloader.
+      this.state = this.states.PENDING;
+      // When loading the images, a promise will be returned to indicate
+      // when the loading has completed (and / or progressed).
+      this.deferred = $q.defer();
+      this.promise = this.deferred.promise;
+    }
+    // ---
+    // STATIC METHODS.
+    // ---
+    // I reload the given images [Array] and return a promise. The promise
+    // will be resolved with the array of image locations.
+    Preloader.preloadImages = function(imageLocations) {
+      var preloader = new Preloader(imageLocations);
+      return (preloader.load());
+    };
+    // ---
+    // INSTANCE METHODS.
+    // ---
+    Preloader.prototype = {
+      // Best practice for "instnceof" operator.
+      constructor: Preloader,
+      // ---
+      // PUBLIC METHODS.
+      // ---
+      // I determine if the preloader has started loading images yet.
+      isInitiated: function isInitiated() {
+        return (this.state !== this.states.PENDING);
+      },
+      // I determine if the preloader has failed to load all of the images.
+      isRejected: function isRejected() {
+        return (this.state === this.states.REJECTED);
+      },
+      // I determine if the preloader has successfully loaded all of the images.
+      isResolved: function isResolved() {
+        return (this.state === this.states.RESOLVED);
+      },
+      // I initiate the preload of the images. Returns a promise.
+      load: function load() {
+        // If the images are already loading, return the existing promise.
+        if (this.isInitiated()) {
+          return (this.promise);
+        }
+        this.state = this.states.LOADING;
+        for (var i = 0; i < this.imageCount; i++) {
+          this.loadImageLocation(this.imageLocations[i]);
+        }
+        // Return the deferred promise for the load event.
+        return (this.promise);
+      },
+      // ---
+      // PRIVATE METHODS.
+      // ---
+      // I handle the load-failure of the given image location.
+      handleImageError: function handleImageError(imageLocation) {
+        this.errorCount++;
+        // If the preload action has already failed, ignore further action.
+        if (this.isRejected()) {
+          return;
+        }
+        this.state = this.states.REJECTED;
+        this.deferred.reject(imageLocation);
+      },
+      // I handle the load-success of the given image location.
+      handleImageLoad: function handleImageLoad(imageLocation) {
+        this.loadCount++;
+        // If the preload action has already failed, ignore further action.
+        if (this.isRejected()) {
+          return;
+        }
+        // Notify the progress of the overall deferred. This is different
+        // than Resolving the deferred - you can call notify many times
+        // before the ultimate resolution (or rejection) of the deferred.
+        this.deferred.notify({
+          percent: Math.ceil(this.loadCount / this.imageCount * 100),
+          imageLocation: imageLocation
+        });
+        // If all of the images have loaded, we can resolve the deferred
+        // value that we returned to the calling context.
+        if (this.loadCount === this.imageCount) {
+          this.state = this.states.RESOLVED;
+          this.deferred.resolve(this.imageLocations);
+        }
+      },
+      // I load the given image location and then wire the load / error
+      // events back into the preloader instance.
+      // --
+      // NOTE: The load/error events trigger a $digest.
+      loadImageLocation: function loadImageLocation(imageLocation) {
+        var preloader = this;
+        // When it comes to creating the image object, it is critical that
+        // we bind the event handlers BEFORE we actually set the image
+        // source. Failure to do so will prevent the events from proper
+        // triggering in some browsers.
+        var image = $(new Image())
+          .load(
+            function(event) {
+              // Since the load event is asynchronous, we have to
+              // tell AngularJS that something changed.
+              $rootScope.$apply(
+                function() {
+                  preloader.handleImageLoad(event.target.src);
+                  // Clean up object reference to help with the
+                  // garbage collection in the closure.
+                  preloader = image = event = null;
+                }
+              );
+            }
+          )
+          .error(
+            function(event) {
+              // Since the load event is asynchronous, we have to
+              // tell AngularJS that something changed.
+              $rootScope.$apply(
+                function() {
+                  preloader.handleImageError(event.target.src);
+                  // Clean up object reference to help with the
+                  // garbage collection in the closure.
+                  preloader = image = event = null;
+                }
+              );
+            }
+          )
+          .prop("src", imageLocation);
+      }
+    };
+    // Return the factory instance.
+    return (Preloader);
+  }
+);
