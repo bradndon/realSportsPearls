@@ -387,6 +387,9 @@ float:right; padding: 8px;
   font-family: 'Lato', sans-serif;
   margin: 0px 8px;
 }
+.top__text--customize {
+  margin-left: 25px;
+}
 .top__text--small {
   font-size: 3.1rem;
 }
@@ -399,7 +402,7 @@ float:right; padding: 8px;
 }
 .top__divider--customize {
   margin: 15px 0px;
-  margin-left: 10px;
+  margin-left: 25px;
 }
 .top__customizebtn {
   font-family: 'Lato', sans-serif;
