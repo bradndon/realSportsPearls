@@ -31,6 +31,46 @@ label:hover {
     height: 90%;
   }
 }
+
+.checkout {
+  width: 40%;
+  height: auto;
+  min-width: 250px;
+  padding: 20px;
+  background-color: rgba(25, 27, 28, .8);
+}
+.checkout__list {
+  display: block;
+  list-style-type: none;
+  padding: 0px;
+}
+.checkout__item:last-child .checkout__lbl > .checkout__lbldiv {
+  border-bottom: 1px solid #CECECE;
+}
+.checkout__item {
+  width: 100%;
+  height:80px;
+}
+.checkout__lbl {
+  font-family: 'Lato', sans-serif;
+  font-size: 2.0rem;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid #CECECE;
+}
+.checkout__radio:checked + .checkout__lbl > .checkout__lbldiv {
+  background-color: #20363F;
+}
+.checkout__lbldiv{
+  border-top: 1px solid #CECECE;
+  width:100%;
+  height:80px;
+}
+.checkout__radio {
+  display: none;
+}
+
 .bottom {
   width: auto;
   height: 38%;
@@ -121,6 +161,7 @@ label:hover {
   }
 }
 .contactform {
+  display:none;
   min-width: 35rem;
   width: 40%;
   height: auto;
@@ -153,14 +194,15 @@ label:hover {
 .contactform__submitbtn {
   font-family: 'Lato', sans-serif;
   font-size: 2.0rem;
-  margin-right: 70px;
+  float:right;
+  margin-right: 0px;
   margin-bottom: 0px;
   padding: 10px 15px;
   background-color: #24292E;
   color: white;
   border: 1px white solid;
 }
-.contactform__closebtn:hover {
+.modal__closebtn:hover {
   opacity: .7;
   cursor: pointer;
 }

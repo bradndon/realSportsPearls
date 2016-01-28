@@ -37,7 +37,7 @@
       </a>
     </li>
     <li class="nav__item">
-      <a href="" class="nav__link" onclick="$('.modal').fadeIn(200).css('display','flex');">
+      <a href="" class="nav__link" onclick="$('.contactform').show();$('.modal').fadeIn(200).css('display','flex');">
         <p class="nav__text">DROP US</p>
         <p class="nav__text nav__text--small">A LINE</p>
       </a>
@@ -67,7 +67,7 @@
       </a>
     </li>
     <li class="nav__item nav__item--mobile">
-      <a href="" class="nav__link nav__link--mobile" onclick="$('.modal').fadeIn(200).css('display','flex');$(this).parent().parent().slideUp();">
+      <a href="" class="nav__link nav__link--mobile" onclick="$('.contactform').show();$('.modal').fadeIn(200).css('display','flex');$(this).parent().parent().slideUp();">
         <p class="nav__text">DROP US</p>
         <p class="nav__text nav__text--small">A LINE</p>
       </a>
@@ -80,12 +80,12 @@
   </div>
   <div class="modal">
     <div class="contactform">
-      <svg class="contactform__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);">
+      <svg class="modal__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);$('.contactform').fadeOut(200);">
         <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
         <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
       </svg>
       <br>
-      <form class="contactform__form">
+      <div class="contactform__form">
         <label for="name">NAME</label>
         <br>
         <input class="contactform__text" id="name" type="text"></input>
@@ -98,7 +98,47 @@
           <textarea class="contactform__text contactform__text--area" id="message" rows="7" cols="50"></textarea>
           <br>
           <input type="submit" class="contactform__submitbtn" value="CONTACT US">
-      </form>
+      </div>
+    </div>
+
+    <div class="checkout">
+      <svg class="modal__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);$('.contactform').fadeOut(200);">
+        <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
+        <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
+      </svg>
+      <h1 style="color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem;">CHOOSE YOUR LENGTH</h1>
+      <ul class="checkout__list">
+        <li class="checkout__item">
+          <input class="checkout__radio" type="radio" name="length" id="length1">
+          <label class="checkout__lbl" for="length1">
+            <div class="checkout__lbldiv">
+              <p class="checkout__text" style="float:left; padding: 8px;">16"</p>
+              <p class="checkout__price" style="float:right; padding: 8px;">$180.00</p>
+            </div>
+            <div style="clear: both;"></div>
+          </label>
+        </li>
+        <li class="checkout__item">
+          <input class="checkout__radio" type="radio" name="length" id="length2">
+          <label class="checkout__lbl" for="length2">
+            <div class="checkout__lbldiv">
+              <p class="checkout__text" style="float:left; padding: 8px;">18"</p>
+              <p class="checkout__price" style="float:right; padding: 8px;">$187.50</p>
+            </div>
+            <div style="clear: both;"></div>
+          </label>
+        </li>
+        <li class="checkout__item">
+          <input class="checkout__radio" type="radio" name="length" id="length3">
+          <label class="checkout__lbl" for="length3">
+            <div class="checkout__lbldiv">
+              <p class="checkout__text" style="float:left; padding: 8px;">20"</p>
+              <p class="checkout__price" style="float:right; padding: 8px;">$195.00</p>
+            </div>
+            <div style="clear: both;"></div>
+          </label>
+        </li>
+      </ul>
     </div>
   </div>
 

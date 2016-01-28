@@ -38,10 +38,6 @@
   color: white;
   border: 1px white solid;
 }
-.contactform__closebtn:hover {
-  opacity: .7;
-  cursor: pointer;
-}
 .contactform__submitbtn:hover {
   opacity: 0.7;
   cursor: pointer;

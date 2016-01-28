@@ -80,10 +80,22 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     Customizer.updateSelection(position, entities);
     $scope.chosenLeft = Customizer.getLeft();
     $scope.chosenRight = Customizer.getRight();
+    if ($scope.chosenRight != -1 || $scope.chosenLeft != -1) {
+      $scope.isDisabled = false;
+      $('.top__overlay').css('opacity', 0.3);
+    } else {
+      $scope.isDisabled = true;
+      $('.top__overlay').css('opacity', 1.0);
+    }
   }
+  $scope.isDisabled = false;
   $scope.chosenRight = Customizer.getLeft();
   $scope.chosenLeft = Customizer.getRight();
-  console.log($scope.chosenRight);
+  if ($scope.chosenRight != -1 || $scope.chosenLeft != -1) {
+    $scope.isDisabled = false;
+  } else {
+    $scope.isDisabled = true;
+  }
   // I keep track of the state of the loading images.
   $scope.isLoading = true;
   $scope.isSuccessful = false;
@@ -219,11 +231,11 @@ pearlsApp.service("Customizer", function() {
     if (firstChosen == -1 && secondChosen == -1) {
       chosenLeft = -1;
       chosenRight = -1;
-      $('.top__overlay').css('opacity', 1.0);
-      $(".top__buybtn").prop('disabled', true);
+      // $('.top__overlay').css('opacity', 1.0);
+      // $(".top__buybtn").prop('disabled', true);
     } else {
-      $('.top__overlay').css('opacity', 0.3);
-      $(".top__buybtn").prop('disabled', false);
+      // $('.top__overlay').css('opacity', 0.3);
+      // $(".top__buybtn").prop('disabled', false);
     }
   }
 })
