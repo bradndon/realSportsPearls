@@ -101,7 +101,7 @@
       </div>
     </div>
 
-    <div class="checkout">
+    <div class="checkout" ng-controller="CheckoutCtrl">
       <svg class="modal__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);$('.contactform').fadeOut(200);">
         <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
         <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
@@ -109,36 +109,38 @@
       <h1 class="checkout__title">CHOOSE YOUR LENGTH</h1>
       <ul class="checkout__list">
         <li class="checkout__item">
-          <input class="checkout__radio" type="radio" name="length" id="length1">
+          <input class="checkout__radio" type="radio" name="length" ng-model="price" id="length1" value="180.00">
           <label class="checkout__lbl" for="length1">
             <div class="checkout__lbldiv">
-              <p class="checkout__text">16"</p>
-              <p class="checkout__price">$180.00</p>
+              <p class="checkout__text checkout__text--left">16"</p>
+              <p class="checkout__text checkout__text--right">$180.00</p>
             </div>
             <div style="clear: both;"></div>
           </label>
         </li>
         <li class="checkout__item">
-          <input class="checkout__radio" type="radio" name="length" id="length2">
+          <input class="checkout__radio" type="radio" name="length" ng-model="price" id="length2" value="187.50">
           <label class="checkout__lbl" for="length2">
             <div class="checkout__lbldiv">
-              <p class="checkout__text">18"</p>
-              <p class="checkout__price">$187.50</p>
+              <p class="checkout__text checkout__text--left">18"</p>
+              <p class="checkout__text checkout__text--right">$187.50</p>
             </div>
             <div style="clear: both;"></div>
           </label>
         </li>
         <li class="checkout__item">
-          <input class="checkout__radio" type="radio" name="length" id="length3">
+          <input class="checkout__radio" type="radio" name="length" ng-model="price" id="length3" value="195.00">
           <label class="checkout__lbl" for="length3">
             <div class="checkout__lbldiv">
-              <p class="checkout__text">20"</p>
-              <p class="checkout__price">$195.00</p>
+              <p class="checkout__text checkout__text--left">20"</p>
+              <p class="checkout__text checkout__text--right">$195.00</p>
             </div>
             <div style="clear: both;"></div>
           </label>
         </li>
       </ul>
+      <p class="checkout__text checkout__text--total">Total: {{price | currency}}</p>
+      <button class="checkout__continuebtn">CONTINUE</button>
     </div>
   </div>
 

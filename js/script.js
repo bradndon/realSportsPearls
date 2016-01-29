@@ -140,6 +140,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       $scope.percentLoaded = event.percent;
     }
   );
+}).controller('CheckoutCtrl', function($scope, preloader, resize, Customizer) {
+  $scope.price = 180.00;
 });
 pearlsApp.factory("resize", function() {
   return {
