@@ -14,7 +14,7 @@
         <div class="top__divider top__divider--customize"></div>
         <p class="top__text top__text--small top__text--customize">Choose two colors<br>below to get started</p>
       </div>
-      <button class="top__buybtn" ng-disabled="isDisabled" onclick="$('.modal').fadeIn(200).css('display','flex');">BUY IT NOW</button>
+      <button class="top__buybtn" ng-disabled="isDisabled" onclick="$('.modal').fadeIn(200).css('display','flex');$('.checkout').fadeIn(200);">BUY IT NOW</button>
     </div>
     <div class="bottom bottom--custom">
       <div ng-repeat="chk in radioLeft" class="bottom__colors" style="float:left;  background-color:#CECECE;" ng-style="getLabelWidth()">

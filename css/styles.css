@@ -66,7 +66,8 @@ label:hover {
   height:80px;
 }
 .checkout__radio {
-  display: none;
+  position: absolute;
+  left: -100000;
 }
 .checkout__title {
 color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem;
@@ -101,6 +102,13 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   color: white;
   border: 1px white solid;
 }
+.checkout__paypalbtn {
+  background: none;
+  border: none;
+  margin-top: 10px;
+  padding: 0;
+  float: right;
+}
 .checkout__continuebtn:hover {
   opacity: 0.7;
   cursor: pointer;
@@ -110,6 +118,12 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
     font-size: 1.8rem;
     padding: 5px 10px;
     margin-top: 8px;
+  }
+  .checkout__paypalimg {
+    width:100px;
+  }
+  .checkout__paypalbtn {
+    margin-top: 12px;
   }
 }
 @media only screen and (max-width: 620px) {
@@ -165,7 +179,8 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   background-color: white;
 }
 .bottom__rondelechk {
-  display: none;
+  position: absolute;
+  left: -100000;
 }
 .bottom__rondelectr {
   border: 1px solid #979797;

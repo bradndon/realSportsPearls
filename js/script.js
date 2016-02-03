@@ -82,10 +82,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $scope.chosenRight = Customizer.getRight();
     if ($scope.chosenRight != -1 || $scope.chosenLeft != -1) {
       $scope.isDisabled = false;
-      $('.top__overlay').css('opacity', 0.3);
     } else {
       $scope.isDisabled = true;
-      $('.top__overlay').css('opacity', 1.0);
     }
   }
   $scope.isDisabled = false;
@@ -142,6 +140,27 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   );
 }).controller('CheckoutCtrl', function($scope, preloader, resize, Customizer) {
   $scope.price = 180.00;
+  $scope.earring = true;
+  $scope.titles = ["CHOOSE YOUR LENGTH", "WOULD YOU LIKE EARRINGS?"];
+  $scope.currPage = 1;
+  $scope.title = $scope.titles[$scope.currPage -1 ];
+  $scope.checkout = function() {
+    document.getElementById("item_name").value="First Color: " + (Customizer.getLeft()+1)/2 + " Second Color:" + ((Customizer.getRight()/2)+1);
+    document.getElementById("amount").value=$scope.price;
+
+  }
+  $scope.continueCheckout = function() {
+    $scope.currPage ++;
+    $scope.title = $scope.titles[$scope.currPage - 1];
+  }
+  $scope.resetCheckout = function() {
+    $('.modal').fadeOut(200);
+    $('.checkout').fadeOut(200,function(){
+      $scope.currPage=1;
+      $scope.title = $scope.titles[$scope.currPage -1 ];
+      $scope.$apply()
+    });
+  }
 });
 pearlsApp.factory("resize", function() {
   return {
