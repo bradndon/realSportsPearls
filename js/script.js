@@ -160,7 +160,11 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   }
   $scope.continueCheckout = function() {
-    $scope.currPage ++;
+    if ($scope.price == 0){
+      $scope.currPage = 3;
+    } else {
+      $scope.currPage ++;
+    }
     $scope.title = $scope.titles[$scope.currPage - 1];
     if ($scope.currPage == 3) {
       $scope.earringLength = 80.00;
