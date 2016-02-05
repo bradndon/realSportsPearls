@@ -49,21 +49,24 @@ label:hover {
 }
 .checkout__item {
   width: 100%;
-  height:80px;
+  height:8.0em;
 }
 .checkout__item--horizontal {
   width: 33%;
+  height:12.0em;
   float: left;
-  border-bottom: 1px solid #CECECE;
+  /*border-bottom: 1px solid #CECECE;*/
 }
-.checkout__item--horizontal .checkout__lbl > .checkout__lbldiv {
-  border-bottom: 1px solid #CECECE;
-}
+
 .checkout__lbl {
   color: white;
   background-color: transparent;
   border: none;
   border-top: 1px solid #CECECE;
+}
+.checkout__img {
+  height: 100%;
+  float: left;
 }
 .checkout__radio:checked + .checkout__lbl > .checkout__lbldiv {
   background-color: #20363F;
@@ -72,6 +75,10 @@ label:hover {
   border-top: 1px solid #CECECE;
   width:100%;
   height:8.0em;
+}
+.checkout__item--horizontal .checkout__lbl > .checkout__lbldiv {
+  border-bottom: 1px solid #CECECE;
+  height: 12.0em;
 }
 .checkout__radio {
   position: absolute;
@@ -100,6 +107,9 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 .checkout__text--total {
   margin-top: 12px;
   float: left;
+}
+.checkout__text--horizontal {
+  margin-top: 2.4em;
 }
 .checkout__continuebtn {
   float:right;

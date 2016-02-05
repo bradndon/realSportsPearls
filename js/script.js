@@ -142,6 +142,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.price = 180.00;
   $scope.earring = true;
   $scope.earringLength = 0;
+  $scope.earringStyle = "A";
   $scope.titles = ["CHOOSE YOUR LENGTH", "WOULD YOU LIKE EARRINGS?", "WHICH STYLE?"];
   $scope.currPage = 1;
   $scope.title = $scope.titles[$scope.currPage -1 ];
