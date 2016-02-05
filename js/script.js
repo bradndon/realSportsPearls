@@ -141,21 +141,36 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 }).controller('CheckoutCtrl', function($scope, preloader, resize, Customizer) {
   $scope.price = 180.00;
   $scope.earring = true;
-  $scope.titles = ["CHOOSE YOUR LENGTH", "WOULD YOU LIKE EARRINGS?"];
+  $scope.earringLength = 0;
+  $scope.titles = ["CHOOSE YOUR LENGTH", "WOULD YOU LIKE EARRINGS?", "WHICH STYLE?"];
   $scope.currPage = 1;
   $scope.title = $scope.titles[$scope.currPage -1 ];
   $scope.checkout = function() {
-    document.getElementById("item_name").value="First Color: " + (Customizer.getLeft()+1)/2 + " Second Color:" + ((Customizer.getRight()/2)+1);
-    document.getElementById("amount").value=$scope.price;
+    var value = "First Color: " + (Customizer.getLeft()+1)/2 + " Second Color: " + ((Customizer.getRight()/2)+1);
+    if ($scope.price == 180.00){
+      value += " - 16 inch Necklace"
+    } else if ($scope.price == 187.50) {
+      value += " - 18 inch Necklace"
+    } else {
+      value += " - 20 inch Necklace"
+    }
+    document.getElementById("item_name").value = value;
+    document.getElementById("amount").value = $scope.price;
 
   }
   $scope.continueCheckout = function() {
     $scope.currPage ++;
     $scope.title = $scope.titles[$scope.currPage - 1];
+    if ($scope.currPage == 3) {
+      $scope.earringLength = 80.00;
+      $scope.earring = false;
+    }
   }
   $scope.resetCheckout = function() {
     $('.modal').fadeOut(200);
     $('.checkout').fadeOut(200,function(){
+      $scope.earringLength = 0;
+      $scope.earring = true;
       $scope.currPage=1;
       $scope.title = $scope.titles[$scope.currPage -1 ];
       $scope.$apply()
@@ -183,6 +198,9 @@ pearlsApp.factory("resize", function() {
       }
     },
     onstart: function() {
+      $('.modal').fadeOut(200);
+      $('.checkout').fadeOut(200);
+      $('.contactform').fadeOut(200);
       var mq = window.matchMedia("(max-width: 800px)");
       var mq4 = window.matchMedia("(max-device-width: 800px)");
       var mq2 = window.matchMedia("(max-width: 620px)");

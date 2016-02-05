@@ -111,7 +111,7 @@
         <div ng-switch-when="1" class="checkout__page">
           <ul class=" checkout__list ">
             <li class="checkout__item ">
-              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length1" value="180.00">
+              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length1" ng-value="180.00">
               <label class="checkout__lbl " for="length1">
                 <div class="checkout__lbldiv ">
                   <p class="checkout__text checkout__text--left ">16"</p>
@@ -121,7 +121,7 @@
               </label>
             </li>
             <li class="checkout__item">
-              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length2" value="187.50">
+              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length2" ng-value="187.50">
               <label class="checkout__lbl" for="length2">
                 <div class="checkout__lbldiv">
                   <p class="checkout__text checkout__text--left">18"</p>
@@ -131,7 +131,7 @@
               </label>
             </li>
             <li class="checkout__item">
-              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length3" value="195.00">
+              <input class="checkout__radio" type="radio" name="length" ng-model="$parent.price" id="length3" ng-value="195.00">
               <label class="checkout__lbl" for="length3">
                 <div class="checkout__lbldiv">
                   <p class="checkout__text checkout__text--left">20"</p>
@@ -174,8 +174,63 @@
             </li>
           </ul>
         </div>
+      <div ng-switch-when="3" class="checkout__page">
+        <ul class="checkout__list">
+          <li class="checkout__item checkout__item--horizontal">
+            <input class="checkout__radio" type="radio" name="earring-style" ng-model="$parent.earringStyle" id="earring-style1" ng-value="A">
+            <label class="checkout__lbl" for="earring-style1">
+              <div class="checkout__lbldiv">
+                <p class="checkout__text">A</p>
+              </div>
+              <div style="clear: both;"></div>
+            </label>
+          </li>
+          <li class="checkout__item checkout__item--horizontal">
+            <input class="checkout__radio" type="radio" name="earring-style" ng-model="$parent.earringStyle" id="earring-style2" ng-value="B">
+            <label class="checkout__lbl" for="earring-style2">
+              <div class="checkout__lbldiv">
+                <p class="checkout__text">B</p>
+              </div>
+              <div style="clear: both;"></div>
+            </label>
+          </li>
+          <li class="checkout__item checkout__item--horizontal">
+            <input class="checkout__radio" type="radio" name="earring-style" ng-model="$parent.earringStyle" id="earring-style3" ng-value="C">
+            <label class="checkout__lbl" for="earring-style3">
+              <div class="checkout__lbldiv">
+                <p class="checkout__text">C</p>
+              </div>
+              <div style="clear: both;"></div>
+            </label>
+          </li>
+        </ul>
+        <h1 class="checkout__title">HOW MANY PEARLS?</h1>
+        <ul class="checkout__list">
+          <li class="checkout__item">
+            <input class="checkout__radio" type="radio" name="earring-length" ng-model="$parent.earringLength" id="earring-length1" ng-value="80.00">
+            <label class="checkout__lbl" for="earring-length1">
+              <div class="checkout__lbldiv">
+                <p class="checkout__text checkout__text--left">3</p>
+                <p class="checkout__text checkout__text--right">$80.00</p>
+              </div>
+              <div style="clear: both;"></div>
+            </label>
+          </li>
+          <li class="checkout__item">
+            <input class="checkout__radio" type="radio" name="earring-length" ng-model="$parent.earringLength" id="earring-length2" ng-value="85.00">
+            <label class="checkout__lbl" for="earring-length2">
+              <div class="checkout__lbldiv">
+                <p class="checkout__text checkout__text--left">5</p>
+                <p class="checkout__text checkout__text--right">$85.00</p>
+              </div>
+              <div style="clear: both;"></div>
+            </label>
+          </li>
+        </ul>
       </div>
-      <p class="checkout__text checkout__text--total">Total: {{price | currency}}</p>
+    </div>
+
+      <p class="checkout__text checkout__text--total">Total: {{(price + earringLength) | currency}}</p>
       <div ng-switch="earring">
         <button ng-switch-when="true" class="checkout__continuebtn" ng-click="continueCheckout()">CONTINUE</button>
         <form ng-switch-when="false" class="checkout__paypalbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" ng-submit="checkout();">

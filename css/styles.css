@@ -51,6 +51,14 @@ label:hover {
   width: 100%;
   height:80px;
 }
+.checkout__item--horizontal {
+  width: 33%;
+  float: left;
+  border-bottom: 1px solid #CECECE;
+}
+.checkout__item--horizontal .checkout__lbl > .checkout__lbldiv {
+  border-bottom: 1px solid #CECECE;
+}
 .checkout__lbl {
   color: white;
   background-color: transparent;
@@ -63,7 +71,7 @@ label:hover {
 .checkout__lbldiv{
   border-top: 1px solid #CECECE;
   width:100%;
-  height:80px;
+  height:8.0em;
 }
 .checkout__radio {
   position: absolute;
@@ -77,14 +85,17 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   font-family: 'Lato', sans-serif;
   font-size: 2.0rem;
   margin-top: 25px;
+  text-align: center;
 }
 .checkout__text--left{
   padding-left: 8px;
   float:left;
+  text-align: left;
 }
 .checkout__text--right {
   padding-right: 8px;
   float:right;
+  text-align: left;
 }
 .checkout__text--total {
   margin-top: 12px;
