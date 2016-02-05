@@ -148,6 +148,15 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.title = $scope.titles[$scope.currPage -1 ];
   $scope.checkout = function() {
     var value = "First Color: " + (Customizer.getLeft()+1)/2 + " Second Color: " + ((Customizer.getRight()/2)+1);
+    if ($scope.earringLength > 0) {
+      value += " - Earring : " + $scope.earringStyle + " ";
+      if ($scope.earringLength == 80) {
+        value += "3 Pearls"
+      } else {
+        value += "5 Pearls"
+      }
+    }
+
     if ($scope.price == 180.00){
       value += " - 16 inch Necklace"
     } else if ($scope.price == 187.50) {
@@ -155,8 +164,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     } else {
       value += " - 20 inch Necklace"
     }
+
     document.getElementById("item_name").value = value;
-    document.getElementById("amount").value = $scope.price;
+    document.getElementById("amount").value = $scope.price + $scope.earringLength;
 
   }
   $scope.continueCheckout = function() {
