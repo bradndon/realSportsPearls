@@ -29,7 +29,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $self = $(this);
     if ($location.url() != $self.attr('href')) {
       $('#content').animate({
-        transform: "scale3d(.3, .3, .3)"
+        opacity: "0"
       }, function() {
         //now get the anchor href and redirect the browser
         $location.url($self.attr('href'));
