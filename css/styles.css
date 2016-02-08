@@ -11,11 +11,14 @@ body {
 label:hover {
   cursor: pointer;
 }
+
 #content {
   width: 100%;
   height: 100%;
   float: right;
 }
+
+
 @media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
   html {
     font-size: 50%;
@@ -157,8 +160,13 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 }
 .bottom--custom {
   background-color: #CECECE;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 .bottom__left {
+  opacity: 0;
   background: url("../images/pearls.png")no-repeat;
   background-size: cover;
   background-position: center;
@@ -170,6 +178,13 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   display: flex;
   justify-content: center;
   align-items: center;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+  animation-delay: 0.15s;
+  animation-fill-mode: forwards;
+
 }
 .bottom__right {
   background: url("../images/mannequin.png")no-repeat;
@@ -178,6 +193,14 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   width: 50%;
   float: right;
   height: 100%;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+  animation-delay: 0.3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+
 }
 .bottom__overlay {
   text-align: center;
@@ -417,6 +440,10 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   width: auto;
   height: 61.5%;
   border-bottom: 10px solid #191b1c;
+   animation-name: fadeIn;
+   animation-iteration-count: 1;
+   animation-timing-function: ease-in;
+   animation-duration: 0.5s;
 }
 .top--home {
   background: url("../images/main.png")no-repeat;
@@ -557,4 +584,12 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   .top--customize {
     height: 50%;
   }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

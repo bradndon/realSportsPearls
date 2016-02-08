@@ -19,10 +19,25 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     });
 
   $locationProvider.html5Mode(true);
-}).controller('HomeCtrl', function($scope, $location, resize) {
+}).controller('HomeCtrl', function($scope, $location, resize, preloader, Loaded) {
+  $('.nav__link--mobile').click(function(event) {
+    $(this).parent().parent().slideUp();
+  });
+  $('.nav__link--change').off();
+  $('.nav__link--change').click(function(event) {
+    event.preventDefault();
+    $self = $(this);
+    if ($location.url() != $self.attr('href')) {
+      $('#content').animate({
+        transform: "scale3d(.3, .3, .3)"
+      }, function() {
+        //now get the anchor href and redirect the browser
+        $location.url($self.attr('href'));
+        $scope.$apply();
 
-  $('.nav__link--mobile').click(function(event){ $(this).parent().parent().slideUp();});
-
+      });
+    }
+  });
   resize.onstart();
 
   $(window).on("resize.doResize", resize.resize);
@@ -38,9 +53,66 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.goCustom = function() {
     $location.url('/customize');
   };
-}).controller('CustomCtrl', function($scope, preloader, resize, Customizer) {
+  // I keep track of the state of the loading images.
+  $scope.isLoading = Loaded.getLoad();
+  $scope.isSuccessful = false;
+  $scope.percentLoaded = 0;
+  // I am the image SRC values to preload and display.
+  $scope.imageLocations = [];
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+  }
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
+  }
+  $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
+  $scope.imageLocations.push("../images/logo.png");
+  $scope.imageLocations.push("../images/main.png");
+  $scope.imageLocations.push("../images/mannequin.png");
+  $scope.imageLocations.push("../images/paypal.png");
+  $scope.imageLocations.push("../images/pearls.png");
+  // Preload the images; then, update display when returned.
+  if ($scope.isLoading) {
+    preloader.preloadImages($scope.imageLocations).then(
+      function handleResolve(imageLocations) {
+        // Loading was successful.
+        $scope.isLoading = Loaded.setLoad(false);
+        $scope.isSuccessful = true;
+      },
+      function handleReject(imageLocation) {
+        // Loading failed on at least one image.
+        $scope.isLoading = false;
+        $scope.isSuccessful = false;
+        console.error("Image Failed", imageLocation);
+        console.info("Preload Failure");
+      },
+      function handleNotify(event) {
+        $scope.percentLoaded = event.percent;
+      }
+    );
+  }
 
-  $('.nav__link--mobile').click(function(event){ $(this).parent().parent().slideUp();});
+}).controller('CustomCtrl', function($scope, $location, preloader, resize, Customizer, Loaded) {
+  $('.nav__link--change').off();
+
+  $('.nav__link--change').click(function(event) {
+    event.preventDefault();
+    $self = $(this);
+    if ($location.url() != $self.attr('href')) {
+      $('#content').animate({
+        opacity: "0"
+      }, function() {
+        //now get the anchor href and redirect the browser
+        $location.url($self.attr('href'));
+        $scope.$apply();
+
+      });
+    }
+  });
+  $('.nav__link--mobile').click(function(event) {
+    $(this).parent().parent().slideUp();
+  });
   resize.onstart();
 
   $(window).on("resize.doResize", resize.resize);
@@ -95,7 +167,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $scope.isDisabled = true;
   }
   // I keep track of the state of the loading images.
-  $scope.isLoading = true;
+  $scope.isLoading = Loaded.getLoad();
   $scope.isSuccessful = false;
   $scope.percentLoaded = 0;
   // I am the image SRC values to preload and display.
@@ -120,24 +192,31 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
+  $scope.imageLocations.push("../images/logo.png");
+  $scope.imageLocations.push("../images/main.png");
+  $scope.imageLocations.push("../images/mannequin.png");
+  $scope.imageLocations.push("../images/paypal.png");
+  $scope.imageLocations.push("../images/pearls.png");
   // Preload the images; then, update display when returned.
-  preloader.preloadImages($scope.imageLocations).then(
-    function handleResolve(imageLocations) {
-      // Loading was successful.
-      $scope.isLoading = false;
-      $scope.isSuccessful = true;
-    },
-    function handleReject(imageLocation) {
-      // Loading failed on at least one image.
-      $scope.isLoading = false;
-      $scope.isSuccessful = false;
-      console.error("Image Failed", imageLocation);
-      console.info("Preload Failure");
-    },
-    function handleNotify(event) {
-      $scope.percentLoaded = event.percent;
-    }
-  );
+  if ($scope.isLoading) {
+    preloader.preloadImages($scope.imageLocations).then(
+      function handleResolve(imageLocations) {
+        // Loading was successful.
+        $scope.isLoading = Loaded.setLoad(false);
+        $scope.isSuccessful = true;
+      },
+      function handleReject(imageLocation) {
+        // Loading failed on at least one image.
+        $scope.isLoading = false;
+        $scope.isSuccessful = false;
+        console.error("Image Failed", imageLocation);
+        console.info("Preload Failure");
+      },
+      function handleNotify(event) {
+        $scope.percentLoaded = event.percent;
+      }
+    );
+  }
 }).controller('CheckoutCtrl', function($scope, preloader, resize, Customizer) {
   $scope.price = 180.00;
   $scope.earring = true;
@@ -145,9 +224,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.earringStyle = "A";
   $scope.titles = ["CHOOSE YOUR LENGTH", "WOULD YOU LIKE EARRINGS?", "WHICH STYLE?"];
   $scope.currPage = 1;
-  $scope.title = $scope.titles[$scope.currPage -1 ];
+  $scope.title = $scope.titles[$scope.currPage - 1];
   $scope.checkout = function() {
-    var value = "First Color: " + (Customizer.getLeft()+1)/2 + " Second Color: " + ((Customizer.getRight()/2)+1);
+    var value = "First Color: " + (Customizer.getLeft() + 1) / 2 + " Second Color: " + ((Customizer.getRight() / 2) + 1);
     if ($scope.earringLength > 0) {
       value += " - Earring : " + $scope.earringStyle + " ";
       if ($scope.earringLength == 80) {
@@ -157,7 +236,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       }
     }
 
-    if ($scope.price == 180.00){
+    if ($scope.price == 180.00) {
       value += " - 16 inch Necklace"
     } else if ($scope.price == 187.50) {
       value += " - 18 inch Necklace"
@@ -170,10 +249,10 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   }
   $scope.continueCheckout = function() {
-    if ($scope.price == 0){
+    if ($scope.price == 0) {
       $scope.currPage = 3;
     } else {
-      $scope.currPage ++;
+      $scope.currPage++;
     }
     $scope.title = $scope.titles[$scope.currPage - 1];
     if ($scope.currPage == 3) {
@@ -183,11 +262,11 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   }
   $scope.resetCheckout = function() {
     $('.modal').fadeOut(200);
-    $('.checkout').fadeOut(200,function(){
+    $('.checkout').fadeOut(200, function() {
       $scope.earringLength = 0;
       $scope.earring = true;
-      $scope.currPage=1;
-      $scope.title = $scope.titles[$scope.currPage -1 ];
+      $scope.currPage = 1;
+      $scope.title = $scope.titles[$scope.currPage - 1];
       $scope.$apply()
     });
   }
@@ -444,3 +523,14 @@ pearlsApp.factory(
     return (Preloader);
   }
 );
+pearlsApp.service('Loaded', function() {
+  load = true;
+  imageLocations = [];
+  this.getLoad = function() {
+    return load;
+  }
+  this.setLoad = function(value) {
+    load = value;
+    return value;
+  }
+});

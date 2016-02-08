@@ -1,17 +1,26 @@
-<div class="top top--home">
-  <div class="top__overlay top__overlay--home">
-    <p class="top__text">RISUS INCEPTOS PHARETRA MAGASS</p>
-    <div class="top__divider"></div>
-    <p class="top__text top__text--small">Total synergy between power, comfort and design.</p>
-    <button class="top__customizebtn" ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
-  </div>
-</div>
-<div class="bottom">
-  <div class="bottom__left">
-    <div class="bottom__overlay">
-      <p class="bottom__text">OVER 30 COLORS</p>
-      <p class="bottom__text bottom__text--small">TO CHOOSE FROM</p>
+<div ng-switch="isLoading">
+
+  <p ng-switch-when="true" style="color:white;font-size:4.8rem">
+
+    Your images are being loaded... {{ percentLoaded }}%
+
+  </p>
+  <div ng-switch-when="false">
+    <div class="top top--home">
+      <div class="top__overlay top__overlay--home">
+        <p class="top__text">RISUS INCEPTOS PHARETRA MAGASS</p>
+        <div class="top__divider"></div>
+        <p class="top__text top__text--small">Total synergy between power, comfort and design.</p>
+        <button class="top__customizebtn" ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="bottom__left">
+        <div class="bottom__overlay">
+          <p class="bottom__text">OVER 30 COLORS</p>
+          <p class="bottom__text bottom__text--small">TO CHOOSE FROM</p>
+        </div>
+      </div>
+      <div class="bottom__right"></div>
     </div>
   </div>
-  <div class="bottom__right"></div>
-</div>
