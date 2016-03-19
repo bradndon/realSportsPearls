@@ -446,14 +446,31 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
    animation-duration: 0.5s;
 }
 .top--home {
-  background: url("../images/main.png")no-repeat;
+  background: url("../images/main.jpg")no-repeat;
+  height: 100%;
   background-size: cover;
-  background-position: bottom;
+  background-position:left;;
+  border: none
+
 }
 .top--customize {
   background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat;
   background-size: cover;
   background-position: center;
+
+}
+.top--about {
+   /*Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,9db1bc+100 */
+  background: #ffffff; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%,#9db1bc 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #EBEBEB 0%,#9db1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  height:100%;
+  border: none;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .top__overlay {
   height: 100%;
@@ -464,6 +481,7 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 .top__overlay--home {
   justify-content: center;
   float: right;
+  margin-right: 30px;
 }
 .top__overlay--customize {
   position: absolute;
@@ -493,6 +511,20 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 .top__text--small {
   font-size: 3.1rem;
 }
+.top__bio {
+  width:40%;
+}
+.top__image {
+  /*margin-left: 10px;*/
+  width:100%;
+}
+.top__content {
+  font-size: 1.8rem;
+  line-height: 3.5rem;
+  font-family: 'Lato', sans-serif;
+  color: #191b1c;
+  /*margin-left: 10px;*/
+}
 .top__divider {
   width: 100px;
   height: 5px;
@@ -503,6 +535,12 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 .top__divider--customize {
   margin: 15px 0px;
   margin-left: 25px;
+}
+.top__divider--about {
+  margin-left: 0px;
+}
+.top__text--about {
+  margin-left: 0px;
 }
 .top__customizebtn {
   font-family: 'Lato', sans-serif;
@@ -539,8 +577,28 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   background-color: grey;
 }
 @media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
+  .top--home {
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%,#9db1bc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #EBEBEB 0%,#9db1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+  .top--about {
+    padding-top: 600px;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+  .top__bio {
+    width:80%;
+    margin-bottom: 20px;
+  }
   .top__overlay--home {
     padding-right: 50px;
+    margin-right: 0px;
+  }
+  .top__customizebtn {
+    margin-left: 8px;
   }
 }
 @media only screen and (max-device-width: 620px) {
@@ -555,7 +613,6 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   .top__customizebtn {
     font-size: 1.8rem;
     margin-top: 8px;
-    margin-left: 0px;
   }
   .top__divider {
     margin: 8px 0px;

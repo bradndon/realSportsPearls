@@ -12,7 +12,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
     })
     .when('/about', {
-      templateUrl: 'templates/about.html'
+      templateUrl: 'templates/about.html',
+      controller: 'AboutCtrl'
     })
     .when('/contact', {
       templateUrl: 'templates/contact.html'
@@ -68,7 +69,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
   $scope.imageLocations.push("../images/logo.png");
-  $scope.imageLocations.push("../images/main.png");
+  $scope.imageLocations.push("../images/main.jpg");
   $scope.imageLocations.push("../images/mannequin.png");
   $scope.imageLocations.push("../images/paypal.png");
   $scope.imageLocations.push("../images/pearls.png");
@@ -92,6 +93,37 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       }
     );
   }
+
+}).controller('AboutCtrl', function($scope, $location, resize, preloader, Loaded) {
+  $('.nav__link--mobile').click(function(event) {
+    $(this).parent().parent().slideUp();
+  });
+  $('.nav__link--change').off();
+  $('.nav__link--change').click(function(event) {
+    event.preventDefault();
+    $self = $(this);
+    if ($location.url() != $self.attr('href')) {
+      $('#content').animate({
+        opacity: "0"
+      }, function() {
+        //now get the anchor href and redirect the browser
+        $location.url($self.attr('href'));
+        $scope.$apply();
+
+      });
+    }
+  });
+  resize.onstart();
+
+  $(window).on("resize.doResize", resize.resize);
+  $scope.$on("$destroy", function() {
+    $(window).off("resize.doResize"); //remove the handler added earlier
+  });
+
+  $('.nav__link').each(function() {
+    $(this).removeClass('nav__link--selected');
+  });
+  $('.nav-about').addClass('nav__link--selected');
 
 }).controller('CustomCtrl', function($scope, $location, preloader, resize, Customizer, Loaded) {
   $('.nav__link--change').off();
