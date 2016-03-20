@@ -79,7 +79,7 @@
 
   </div>
   <div class="modal">
-    <form class="contactform" action="templates/contact-form-handler.php" method="post">
+    <form class="contactform">
       <svg class="modal__closebtn" style="float:right;" width="25px" height="25px" version="1.1" xmlns="http://www.w3.org/2000/svg" onclick="$('.modal').fadeOut(200);$('.contactform').fadeOut(200);">
         <line x1="5" y1="5" x2="20" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
         <line x1="20" y1="5" x2="5" y2="20" style="stroke:rgb(255,255,255);stroke-width:5" />
@@ -88,16 +88,16 @@
       <div class="contactform__form">
         <label for="name">NAME</label>
         <br>
-        <input name="name" class="contactform__text" id="name" type="text"></input>
+        <input id="contactname" name="name" class="contactform__text" id="name" type="text"></input>
         <br>
         <label for="email">EMAIL</label<br>
-          <input name="email" class="contactform__text" id="email" type="text"></input>
+          <input id="contactemail" name="email" class="contactform__text" id="email" type="text"></input>
           <br>
           <label for="message">MESSAGE</label>
           <br>
-          <textarea name="message" class="contactform__text contactform__text--area" id="message" rows="7" cols="50"></textarea>
+          <textarea id="contactmessage" name="message" class="contactform__text contactform__text--area" id="message" rows="7" cols="50"></textarea>
           <br>
-          <input type="submit" class="contactform__submitbtn" value="CONTACT US">
+          <input type="button" class="contactform__submitbtn"  onclick="contactus()" value="CONTACT US">
       </div>
     </form>
 

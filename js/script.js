@@ -566,3 +566,17 @@ pearlsApp.service('Loaded', function() {
     return value;
   }
 });
+
+function contactus() {
+  console.log($("#contactname").val());
+
+  $.post("templates/contact-form-handler.php", {
+      name: $("#contactname").val(),
+      email: $("#contactemail").val(),
+      message: $("#contactmessage").val()
+    })
+    .done(function(data) {
+      console.log("MADE IT");
+    });
+
+}
