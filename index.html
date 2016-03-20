@@ -86,14 +86,14 @@
       </svg>
       <br>
       <div class="contactform__form">
-        <label for="name">NAME</label>
+        <label for="name">NAME*</label>
         <br>
         <input id="contactname" name="name" class="contactform__text" id="name" type="text"></input>
         <br>
-        <label for="email">EMAIL</label<br>
+        <label for="email">EMAIL*</label<br>
           <input id="contactemail" name="email" class="contactform__text" id="email" type="text"></input>
           <br>
-          <label for="message">MESSAGE</label>
+          <label for="message">MESSAGE*</label>
           <br>
           <textarea id="contactmessage" name="message" class="contactform__text contactform__text--area" id="message" rows="7" cols="50"></textarea>
           <br>
@@ -235,7 +235,7 @@
       <p class="checkout__text checkout__text--total">Total: {{(price + earringLength) | currency}}</p>
       <div ng-switch="earring">
         <button ng-switch-when="true" class="checkout__continuebtn" ng-click="continueCheckout()">CONTINUE</button>
-        <form ng-switch-when="false" class="checkout__paypalbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" ng-submit="checkout();">
+        <form ng-switch-when="false" target="_blank" class="checkout__paypalbtn" action="https://www.paypal.com/cgi-bin/webscr" method="post" ng-submit="checkout();">
            <input type="hidden" name="business" value="completefinishing@yahoo.com">
            <input type="hidden" name="cmd" value="_cart">
     	     <input type="hidden" name="item_name" id="item_name" value=" First Color : 1 Second Color : 1 -  Earring : A 3 Pearls -  16 inch Necklace ">
