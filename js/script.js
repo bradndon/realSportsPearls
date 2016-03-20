@@ -568,15 +568,40 @@ pearlsApp.service('Loaded', function() {
 });
 
 function contactus() {
-  console.log($("#contactname").val());
+  var valid = true;
+  if ($("#contactmessage").val() === "") {
+    $("#contactmessage").addClass("contactform__text--invalid");
+    $("#contactmessage").focus();
+    valid = false;
+  } else {
+    $("#contactmessage").removeClass("contactform__text--invalid");
 
-  $.post("templates/contact-form-handler.php", {
-      name: $("#contactname").val(),
-      email: $("#contactemail").val(),
-      message: $("#contactmessage").val()
-    })
-    .done(function(data) {
-      console.log("MADE IT");
-    });
+  }
+  if ($("#contactemail").val() === "") {
+    $("#contactemail").addClass("contactform__text--invalid");
+    $("#contactemail").focus();
+    valid = false;
+  } else {
+    $("#contactemail").removeClass("contactform__text--invalid");
 
+  }
+  if ($("#contactname").val() === "") {
+    $("#contactname").addClass("contactform__text--invalid");
+    $("#contactname").focus();
+    valid = false;
+  } else {
+    $("#contactname").removeClass("contactform__text--invalid");
+
+  }
+  if (valid) {
+    $.post("templates/contact-form-handler.php", {
+        name: $("#contactname").val(),
+        email: $("#contactemail").val(),
+        message: $("#contactmessage").val()
+      })
+      .done(function(data) {
+        $('.modal').fadeOut(200);
+        $('.contactform').fadeOut(200);
+      });
+  }
 }
