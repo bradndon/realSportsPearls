@@ -388,9 +388,18 @@ label:hover {
 .nav__expandbtn {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10;
   height: 10%;
-  width: auto;
+  width: 10%;
+  background: url("../images/hamburger.png")no-repeat;
+  border: none;
+  outline: none;
+  background-size: contain;
+  background-position: center;
+}
+.nav__expandbtn:hover {
+  opacity: .5;
+  cursor: pointer;
 }
 .nav__title {
   text-align: center;
