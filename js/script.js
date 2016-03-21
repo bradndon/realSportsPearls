@@ -521,6 +521,15 @@ pearlsApp.factory("resize", function() {
       var newWidth = window.innerHeight / 5
       div.css('width', newWidth);
       var content = $('#content');
+      if (mq2.matches || mq3.matches) {
+        console.log("GOTEM");
+        $(".nav__topbar").css("display","flex");
+        $(".nav--main").css("display","none");
+
+      }else {
+        $(".nav__topbar").css("display","none");
+        $(".nav--main").css("display","block");
+      }
       if (document.body.scrollHeight > document.body.clientHeight) {
         content.css('width', window.innerWidth - 15 - newWidth);
       } else {
@@ -544,6 +553,8 @@ pearlsApp.factory("resize", function() {
       div.css('width', newWidth);
       var content = $('#content');
       $('#bottom').css('height', newWidth * 2);
+
+
       if (document.body.scrollHeight > document.body.clientHeight && !(mq.matches || mq4.matches)) {
         content.css('width', window.innerWidth - 15 - newWidth);
       } else {
