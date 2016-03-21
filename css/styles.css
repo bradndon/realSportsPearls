@@ -11,14 +11,12 @@ body {
 label:hover {
   cursor: pointer;
 }
-
 #content {
   width: 100%;
   height: 100%;
   float: right;
+
 }
-
-
 @media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
   html {
     font-size: 50%;
@@ -34,7 +32,6 @@ label:hover {
     height: 90%;
   }
 }
-
 .checkout {
   width: 40%;
   height: auto;
@@ -52,15 +49,14 @@ label:hover {
 }
 .checkout__item {
   width: 100%;
-  height:8.0em;
+  height: 8.0em;
 }
 .checkout__item--horizontal {
   width: 33%;
-  height:12.0em;
+  height: 12.0em;
   float: left;
   /*border-bottom: 1px solid #CECECE;*/
 }
-
 .checkout__lbl {
   color: white;
   background-color: transparent;
@@ -74,10 +70,10 @@ label:hover {
 .checkout__radio:checked + .checkout__lbl > .checkout__lbldiv {
   background-color: #20363F;
 }
-.checkout__lbldiv{
+.checkout__lbldiv {
   border-top: 1px solid #CECECE;
-  width:100%;
-  height:8.0em;
+  width: 100%;
+  height: 8.0em;
 }
 .checkout__item--horizontal .checkout__lbl > .checkout__lbldiv {
   border-bottom: 1px solid #CECECE;
@@ -88,7 +84,10 @@ label:hover {
   left: -100000;
 }
 .checkout__title {
-color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  margin-top: 0px;
+  font-size: 2.4rem;
 }
 .checkout__text {
   color: white;
@@ -97,14 +96,14 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   margin-top: 25px;
   text-align: center;
 }
-.checkout__text--left{
+.checkout__text--left {
   padding-left: 8px;
-  float:left;
+  float: left;
   text-align: left;
 }
 .checkout__text--right {
   padding-right: 8px;
-  float:right;
+  float: right;
   text-align: left;
 }
 .checkout__text--total {
@@ -115,7 +114,7 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   margin-top: 2.4em;
 }
 .checkout__continuebtn {
-  float:right;
+  float: right;
   margin-top: 0px;
   font-family: 'Lato', sans-serif;
   font-size: 2.0rem;
@@ -144,16 +143,13 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
     margin-top: 8px;
   }
   .checkout__paypalimg {
-    width:100px;
+    width: 100px;
   }
   .checkout__paypalbtn {
     margin-top: 12px;
   }
 }
-@media only screen and (max-width: 620px) {
-
-}
-
+@media only screen and (max-width: 620px) {}
 .bottom {
   width: auto;
   height: 38%;
@@ -184,7 +180,6 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   animation-duration: 0.5s;
   animation-delay: 0.15s;
   animation-fill-mode: forwards;
-
 }
 .bottom__right {
   background: url("../images/mannequin.png")no-repeat;
@@ -200,7 +195,6 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   animation-delay: 0.3s;
   opacity: 0;
   animation-fill-mode: forwards;
-
 }
 .bottom__overlay {
   text-align: center;
@@ -265,7 +259,7 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   }
 }
 .contactform {
-  display:none;
+  display: none;
   min-width: 35rem;
   width: 40%;
   height: auto;
@@ -301,7 +295,7 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 .contactform__submitbtn {
   font-family: 'Lato', sans-serif;
   font-size: 2.0rem;
-  float:right;
+  float: right;
   margin-right: 0px;
   margin-bottom: 0px;
   padding: 10px 15px;
@@ -347,12 +341,16 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   margin: 0;
   padding: 0;
 }
+.nav--main {
+  display: none;
+}
 .nav__item--logobox {
   border-top: none;
   background-color: #24292E;
 }
 .nav__logo {
-  height: 70%;
+  height: 100%;
+  width: 100%;
 }
 .nav__link {
   font-family: 'Lato', sans-serif;
@@ -438,40 +436,110 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
     font-size: 150%;
   }
 }
+.loading {
+  width: 100%;
+  height: 100%;
+
+  background: url("../images/background.jpg")no-repeat;
+}
+.loading__logo {
+  width:15%;
+}
+.loading__logo--opaque {
+  opacity: 0.5;
+}
+.loading__logo--full {
+  height:29.6%;
+  background: url("../images/logo_load.png")no-repeat;
+  background-position:center;
+  background-size: cover;
+}
+#black {
+    /* Added the position and the z-index to ensure images overlay correctly */
+    position:absolute; /*it can be fixed too*/
+            left:0; right:0;
+            top:0; bottom:0;
+            margin:auto;
+    z-index:2;
+
+    /* styling fun */
+    color:black;
+    font-weight:bold;
+    font-size:2em;
+
+    /* default width */
+    width:15%;
+    height:30%;
+    background:url("../images/logo_load_white.png")no-repeat;
+
+    background-size: contain;
+
+}
+#content--home {
+  display:none;
+}
+#red {
+    /* Position and z-index let us overlay the #black and #red elements*/
+    position:absolute; /*it can be fixed too*/
+            left:0; right:0;
+            top:0; bottom:0;
+            margin:auto;    z-index:10;
+
+    /* This is to put the element directly over the #black element
+       (compensating the margin/padding of the #black element */
+
+    /* We make the initial width 0px and hide the overflow. */
+    width:0px;
+    overflow:hidden;
+    background:url("../images/logo_load_grey.png")no-repeat;
+    background-size: cover;;
+    opacity:.5;
+
+    height:100%;
+
+    /* Fun styling */
+    font-weight:bold;
+    font-size:2em;
+    color:red;
+}
 .top {
   position: relative;
   width: auto;
   height: 61.5%;
   border-bottom: 10px solid #191b1c;
-   animation-name: fadeIn;
-   animation-iteration-count: 1;
-   animation-timing-function: ease-in;
-   animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
 }
 .top--home {
   background: url("../images/main.jpg")no-repeat;
   height: 100%;
   background-size: cover;
-  background-position:left;;
+  background-position: left;
+  ;
   border: none
-
 }
 .top--customize {
   background: url('../images/Rondeles_Necklace/necklace_base.jpg')no-repeat;
   background-size: cover;
   background-position: center;
-
 }
 .top--about {
-   /*Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,9db1bc+100 */
-  background: #ffffff; /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%); /* FF3.6-15 */
-  background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%,#9db1bc 100%); /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(ellipse at center, #EBEBEB 0%,#9db1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  height:100%;
+  /*Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,9db1bc+100 */
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%);
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #EBEBEB 0%, #9db1bc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  height: 100%;
   border: none;
-  display:flex;
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
@@ -515,11 +583,11 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   font-size: 3.1rem;
 }
 .top__bio {
-  width:40%;
+  width: 40%;
 }
 .top__image {
   /*margin-left: 10px;*/
-  width:100%;
+  width: 100%;
 }
 .top__content {
   font-size: 1.8rem;
@@ -581,11 +649,16 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
 }
 @media only screen and (max-device-width: 800px), only screen and (max-width: 800px) {
   .top--home {
-    background: #ffffff; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%,#9db1bc 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, #EBEBEB 0%,#9db1bc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: #ffffff;
+    /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%);
+    /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ebebeb 0%, #9db1bc 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #EBEBEB 0%, #9db1bc 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#9db1bc', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
   }
   .top--about {
     padding-top: 600px;
@@ -593,7 +666,7 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
     overflow-y: scroll;
   }
   .top__bio {
-    width:80%;
+    width: 80%;
     margin-bottom: 20px;
   }
   .top__overlay--home {
@@ -646,10 +719,10 @@ color: white; font-family: 'Lato', sans-serif; margin-top:0px; font-size: 2.4rem
   }
 }
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -21,6 +21,25 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 }).controller('HomeCtrl', function($scope, $location, resize, preloader, Loaded) {
+  $scope.isLoading = Loaded.getLoad();
+
+  if(!$scope.isLoading){
+    $("#loading").css("display","none");
+
+    $("#content--home").css("display","block");
+
+    $(".nav--main").css("display","block");
+    resize.onstart();
+
+    }
+  var red = document.getElementById('red');
+
+  var screenWidth = window.screen.width;
+  red.style.height = screenWidth*.15 + "px";
+
+  console.log(screenWidth*.15);
+  red.style.width = screenWidth*.15 + "px";
+  red.style.top = "-4px";
   $('.nav__link--mobile').click(function(event) {
     $(this).parent().parent().slideUp();
   });
@@ -39,7 +58,6 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       });
     }
   });
-  resize.onstart();
 
   $(window).on("resize.doResize", resize.resize);
   $scope.$on("$destroy", function() {
@@ -68,7 +86,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
-  $scope.imageLocations.push("../images/logo.png");
+  $scope.imageLocations.push("../images/logo.jpg");
   $scope.imageLocations.push("../images/main.jpg");
   $scope.imageLocations.push("../images/mannequin.png");
   $scope.imageLocations.push("../images/paypal.png");
@@ -79,22 +97,57 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       function handleResolve(imageLocations) {
         // Loading was successful.
         $scope.isLoading = Loaded.setLoad(false);
+        $("#loading").css("display","none");
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
         $scope.isSuccessful = true;
       },
       function handleReject(imageLocation) {
         // Loading failed on at least one image.
-        $scope.isLoading = false;
+        $scope.isLoading = Loaded.setLoad(false);
         $scope.isSuccessful = false;
+        $("#loading").fadeOut();
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
         console.error("Image Failed", imageLocation);
         console.info("Preload Failure");
       },
       function handleNotify(event) {
         $scope.percentLoaded = event.percent;
+        red.style.height = (parseInt(red.style.height, 10) - 2) + "px";
+        red.style.top = (parseInt(red.style.top, 10) - 2) + "px";
       }
     );
   }
 
 }).controller('AboutCtrl', function($scope, $location, resize, preloader, Loaded) {
+  $scope.isLoading = Loaded.getLoad();
+
+  if(!$scope.isLoading){
+    $("#loading").css("display","none");
+
+    $("#content--home").css("display","block");
+
+    $(".nav--main").css("display","block");
+    resize.onstart();
+
+    }
+  var red = document.getElementById('red');
+
+  var screenWidth = window.screen.width;
+  red.style.height = screenWidth*.15 + "px";
+
+  console.log(screenWidth*.15);
+  red.style.width = screenWidth*.15 + "px";
+  red.style.top = "-4px";
   $('.nav__link--mobile').click(function(event) {
     $(this).parent().parent().slideUp();
   });
@@ -113,7 +166,6 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       });
     }
   });
-  resize.onstart();
 
   $(window).on("resize.doResize", resize.resize);
   $scope.$on("$destroy", function() {
@@ -124,8 +176,81 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     $(this).removeClass('nav__link--selected');
   });
   $('.nav-about').addClass('nav__link--selected');
+  $scope.isSuccessful = false;
+  $scope.percentLoaded = 0;
+  // I am the image SRC values to preload and display.
+  $scope.imageLocations = [];
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+  }
+  for (var i = 0; i < 36; i++) {
+    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
+  }
+  $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
+  $scope.imageLocations.push("../images/logo.jpg");
+  $scope.imageLocations.push("../images/main.jpg");
+  $scope.imageLocations.push("../images/mannequin.png");
+  $scope.imageLocations.push("../images/paypal.png");
+  $scope.imageLocations.push("../images/pearls.png");
+
+
+  if ($scope.isLoading) {
+    preloader.preloadImages($scope.imageLocations).then(
+      function handleResolve(imageLocations) {
+        // Loading was successful.
+        $scope.isLoading = Loaded.setLoad(false);
+        $("#loading").css("display","none");
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
+        $scope.isSuccessful = true;
+      },
+      function handleReject(imageLocation) {
+        // Loading failed on at least one image.
+        $scope.isLoading = Loaded.setLoad(false);
+        $scope.isSuccessful = false;
+        $("#loading").fadeOut();
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
+        console.error("Image Failed", imageLocation);
+        console.info("Preload Failure");
+      },
+      function handleNotify(event) {
+        $scope.percentLoaded = event.percent;
+        red.style.height = (parseInt(red.style.height, 10) - 2) + "px";
+        red.style.top = (parseInt(red.style.top, 10) - 2) + "px";
+      }
+    );
+  }
 
 }).controller('CustomCtrl', function($scope, $location, preloader, resize, Customizer, Loaded) {
+  $scope.isLoading = Loaded.getLoad();
+
+  if(!$scope.isLoading){
+    $("#loading").css("display","none");
+
+    $("#content--home").css("display","block");
+
+    $(".nav--main").css("display","block");
+    resize.onstart();
+
+    }
+  var red = document.getElementById('red');
+
+  var screenWidth = window.screen.width;
+  red.style.height = screenWidth*.15 + "px";
+
+  console.log(screenWidth*.15);
+  red.style.width = screenWidth*.15 + "px";
+  red.style.top = "-4px";
   $('.nav__link--change').off();
 
   $('.nav__link--change').click(function(event) {
@@ -145,7 +270,6 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $('.nav__link--mobile').click(function(event) {
     $(this).parent().parent().slideUp();
   });
-  resize.onstart();
 
   $(window).on("resize.doResize", resize.resize);
   $scope.$on("$destroy", function() {
@@ -169,7 +293,6 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       };
     }
     var newWidth = window.innerHeight / 5
-    $('#content').css('width', window.innerWidth - newWidth);
     return {
       'width': $('.bottom--custom').width() / 9 + 'px'
     };
@@ -235,16 +358,32 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       function handleResolve(imageLocations) {
         // Loading was successful.
         $scope.isLoading = Loaded.setLoad(false);
+        $("#loading").css("display","none");
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
         $scope.isSuccessful = true;
       },
       function handleReject(imageLocation) {
         // Loading failed on at least one image.
-        $scope.isLoading = false;
-        $scope.isSuccessful = false;
+        $scope.isLoading = Loaded.setLoad(false);
+        $("#loading").css("display","none");
+
+        $("#content--home").fadeIn();
+
+        $(".nav--main").fadeIn();
+        resize.onstart();
+
+        $scope.isSuccessful = true;
         console.error("Image Failed", imageLocation);
         console.info("Preload Failure");
       },
       function handleNotify(event) {
+        red.style.height = (parseInt(red.style.height, 10) - 2) + "px";
+        red.style.top = (parseInt(red.style.top, 10) - 2) + "px";
         $scope.percentLoaded = event.percent;
       }
     );
@@ -306,6 +445,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 pearlsApp.factory("resize", function() {
   return {
     resize: function() {
+      console.log("RESIZE");
+
       var div = $('.nav--main');
 
       var mq2 = window.matchMedia("(max-width: 620px)");
@@ -324,6 +465,7 @@ pearlsApp.factory("resize", function() {
       }
     },
     onstart: function() {
+      console.log("ONSTART");
       $('.modal').fadeOut(200);
       $('.checkout').fadeOut(200);
       $('.contactform').fadeOut(200);

@@ -1,17 +1,15 @@
-<div ng-switch="isLoading">
+<div id="loading" class="loading">
+  <div id="red" />
+  <div id="black" />
+</div>
 
-  <p ng-switch-when="true" style="color:white;font-size:4.8rem">
-
-    Your images are being loaded... {{ percentLoaded }}%
-
-  </p>
-  <div ng-switch-when="false">
-    <div class="top top--home">
-      <div class="top__overlay top__overlay--home">
-        <p class="top__text">WELCOME TO REAL SPORTS PEARLS</p>
-        <div class="top__divider"></div>
-        <p class="top__text top__text--small">Custom jewelry since 1990.</p>
-        <button class="top__customizebtn" ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
-      </div>
+<div id="content--home">
+  <div class="top top--home">
+    <div class="top__overlay top__overlay--home">
+      <p class="top__text">WELCOME TO REAL SPORTS PEARLS</p>
+      <div class="top__divider"></div>
+      <p class="top__text top__text--small">Custom jewelry since 1990.</p>
+      <button class="top__customizebtn" ng-click="goCustom()">CUSTOMIZE YOUR NECKLACE</button>
     </div>
   </div>
+</div>

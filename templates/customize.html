@@ -1,31 +1,29 @@
-<div ng-switch="isLoading">
-
-  <p ng-switch-when="true" style="color:white;font-size:4.8rem">
-
-    Your images are being loaded... {{ percentLoaded }}%
-
-  </p>
-  <div ng-switch-when="false">
-    <div class="top top--customize">
-      <div class="top__necklaceimage" ng-style="{'background-image': getImage(chosenLeft)}"></div>
-      <div class="top__necklaceimage" ng-style="{'background-image': getImage(chosenRight)}"></div>
-      <div class="top__overlay top__overlay--customize">
-        <p class="top__text top__text--customize">FIND YOUR<br>PERFECT PEARLS</p>
-        <div class="top__divider top__divider--customize"></div>
-        <p class="top__text top__text--small top__text--customize">Choose your colors<br>below to get started</p>
-      </div>
-      <button class="top__buybtn" ng-disabled="isDisabled" onclick="$('.modal').fadeIn(200).css('display','flex');$('.checkout').fadeIn(200);">BUY IT NOW</button>
+<div id="loading" class="loading">
+  <div id="red" />
+  <div id="black" />
+</div>
+<div id="content--home">
+  <div class="top top--customize">
+    <div class="top__necklaceimage" ng-style="{'background-image': getImage(chosenLeft)}"></div>
+    <div class="top__necklaceimage" ng-style="{'background-image': getImage(chosenRight)}"></div>
+    <div class="top__overlay top__overlay--customize">
+      <p class="top__text top__text--customize">FIND YOUR
+        <br>PERFECT PEARLS</p>
+      <div class="top__divider top__divider--customize"></div>
+      <p class="top__text top__text--small top__text--customize">Choose your colors
+        <br>below to get started</p>
     </div>
-    <div class="bottom bottom--custom">
-      <div ng-repeat="chk in radioLeft" class="bottom__colors" style="float:left;  background-color:#CECECE;" ng-style="getLabelWidth()">
-        <input class="bottom__rondelechk" type="checkbox" ng-model="chk.checked" id="UNIQUELABEL{{$id}}_1" ng-click="updateSelection($index, radioLeft)" />
-        <label class="bottom__rondelelbl" for="UNIQUELABEL{{$id}}_1">
-          <div class="bottom__rondelectr">
-            <div class="bottom__rondeleimg" onclick="" ng-style="{'background-image': getSpriteStyle($index)}"></div>
-          </div>
-        </label>
-      </div>
-      <div style="clear: both;"></div>
+    <button class="top__buybtn" ng-disabled="isDisabled" onclick="$('.modal').fadeIn(200).css('display','flex');$('.checkout').fadeIn(200);">BUY IT NOW</button>
+  </div>
+  <div class="bottom bottom--custom">
+    <div ng-repeat="chk in radioLeft" class="bottom__colors" style="float:left;  background-color:#CECECE;" ng-style="getLabelWidth()">
+      <input class="bottom__rondelechk" type="checkbox" ng-model="chk.checked" id="UNIQUELABEL{{$id}}_1" ng-click="updateSelection($index, radioLeft)" />
+      <label class="bottom__rondelelbl" for="UNIQUELABEL{{$id}}_1">
+        <div class="bottom__rondelectr">
+          <div class="bottom__rondeleimg" onclick="" ng-style="{'background-image': getSpriteStyle($index)}"></div>
+        </div>
+      </label>
     </div>
+    <div style="clear: both;"></div>
   </div>
 </div>
