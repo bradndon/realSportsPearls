@@ -24,14 +24,27 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.isLoading = Loaded.getLoad();
 
   if(!$scope.isLoading){
+    var mq = window.matchMedia("(max-width: 800px)");
+    var mq4 = window.matchMedia("(max-device-width: 800px)");
+
+
     $("#loading").css("display","none");
-
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
     $("#content--home").css("display","block");
+    if (mq2.matches || mq3.matches) {
+      $(".nav__topbar").css("display","flex");
+      $(".nav--main").css("display","none");
 
-    $(".nav--main").css("display","block");
+    }else {
+      $(".nav__topbar").css("display","none");
+      $(".nav--main").css("display","block");
+    }
     resize.onstart();
 
-    }
+  } else {
+    $(".nav").css("display","none");
+  }
   var red = document.getElementById('red');
 
   var screenWidth = window.screen.width;
@@ -101,8 +114,17 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
-        resize.onstart();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").css("display","flex");
+          $(".nav--main").css("display","none");
+
+        }else {
+          $(".nav__topbar").css("display","none");
+          $(".nav--main").css("display","block");
+        }
+                resize.onstart();
 
         $scope.isSuccessful = true;
       },
@@ -114,7 +136,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }
         resize.onstart();
 
         console.error("Image Failed", imageLocation);
@@ -136,8 +164,14 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
     $("#content--home").css("display","block");
 
-    $(".nav--main").css("display","block");
-    resize.onstart();
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
+    if (mq2.matches || mq3.matches) {
+      $(".nav__topbar").css("display","flex");
+    }else {
+      $(".nav--main").css("display","block");
+    }
+        resize.onstart();
 
     }
   var red = document.getElementById('red');
@@ -204,8 +238,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
-        resize.onstart();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }              resize.onstart();
 
         $scope.isSuccessful = true;
       },
@@ -217,8 +256,14 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
-        resize.onstart();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }
+                resize.onstart();
 
         console.error("Image Failed", imageLocation);
         console.info("Preload Failure");
@@ -239,8 +284,17 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
     $("#content--home").css("display","block");
 
-    $(".nav--main").css("display","block");
-    resize.onstart();
+    var mq2 = window.matchMedia("(max-width: 620px)");
+    var mq3 = window.matchMedia("(max-device-width: 620px)");
+    if (mq2.matches || mq3.matches) {
+      $(".nav__topbar").css("display","flex");
+      $(".nav--main").css("display","none");
+
+    }else {
+      $(".nav__topbar").css("display","none");
+      $(".nav--main").css("display","block");
+    }
+        resize.onstart();
 
     }
   var red = document.getElementById('red');
@@ -362,7 +416,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }
         resize.onstart();
 
         $scope.isSuccessful = true;
@@ -374,7 +434,13 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
         $("#content--home").fadeIn();
 
-        $(".nav--main").fadeIn();
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }
         resize.onstart();
 
         $scope.isSuccessful = true;
