@@ -104,6 +104,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.imageLocations.push("../images/mannequin.png");
   $scope.imageLocations.push("../images/paypal.png");
   $scope.imageLocations.push("../images/pearls.png");
+  $scope.imageLocations.push("../images/jo.png");
+  $scope.imageLocations.push("../images/paul.png");
   // Preload the images; then, update display when returned.
   if ($scope.isLoading) {
     preloader.preloadImages($scope.imageLocations).then(
@@ -227,7 +229,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.imageLocations.push("../images/mannequin.png");
   $scope.imageLocations.push("../images/paypal.png");
   $scope.imageLocations.push("../images/pearls.png");
-
+  $scope.imageLocations.push("../images/jo.png");
+  $scope.imageLocations.push("../images/paul.png");
 
   if ($scope.isLoading) {
     preloader.preloadImages($scope.imageLocations).then(
@@ -406,6 +409,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.imageLocations.push("../images/mannequin.png");
   $scope.imageLocations.push("../images/paypal.png");
   $scope.imageLocations.push("../images/pearls.png");
+  $scope.imageLocations.push("../images/jo.png");
+  $scope.imageLocations.push("../images/paul.png");
   // Preload the images; then, update display when returned.
   if ($scope.isLoading) {
     preloader.preloadImages($scope.imageLocations).then(
