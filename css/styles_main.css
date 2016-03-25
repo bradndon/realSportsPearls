@@ -554,7 +554,7 @@ label:hover {
     height:30%;
     background:url("../images/logo_load_white.png")no-repeat;
 
-    background-size: contain;
+    background-size: cover;
 
 }
 #content--home {
