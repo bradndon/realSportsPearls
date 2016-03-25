@@ -49,10 +49,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 
   var screenWidth = window.screen.width;
   red.style.height = screenWidth*.15 + "px";
-
+  $scope.change = (screenWidth*.15)/100;
   console.log(screenWidth*.15);
   red.style.width = screenWidth*.15 + "px";
-  red.style.top = "-4px";
   $('.nav__link--mobile').click(function(event) {
     $(this).parent().parent().slideUp();
   });
@@ -110,7 +109,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   if ($scope.isLoading) {
     preloader.preloadImages($scope.imageLocations).then(
       function handleResolve(imageLocations) {
-        // Loading was successful.
+        // // Loading was successful.
         // $scope.isLoading = Loaded.setLoad(false);
         // $("#loading").css("display","none");
         //
@@ -151,11 +150,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
         console.info("Preload Failure");
       },
       function handleNotify(event) {
-        if (percent < 50){
         $scope.percentLoaded = event.percent;
-        red.style.height = (parseInt(red.style.height, 10) - 2) + "px";
-        red.style.top = (parseInt(red.style.top, 10) - 2) + "px";
-        }
+        red.style.height = ($scope.change*(100-event.percent)) + "px";
+        red.style.top = (-1*($scope.change*(event.percent))-2*$scope.change) + "px";
       }
     );
   }
@@ -238,20 +235,20 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     preloader.preloadImages($scope.imageLocations).then(
       function handleResolve(imageLocations) {
         // Loading was successful.
-        // $scope.isLoading = Loaded.setLoad(false);
-        // $("#loading").css("display","none");
-        //
-        // $("#content--home").fadeIn();
-        //
-        // var mq2 = window.matchMedia("(max-width: 620px)");
-        // var mq3 = window.matchMedia("(max-device-width: 620px)");
-        // if (mq2.matches || mq3.matches) {
-        //   $(".nav__topbar").fadeIn();
-        // }else {
-        //   $(".nav--main").fadeIn();
-        // }              resize.onstart();
-        //
-        // $scope.isSuccessful = true;
+        $scope.isLoading = Loaded.setLoad(false);
+        $("#loading").css("display","none");
+
+        $("#content--home").fadeIn();
+
+        var mq2 = window.matchMedia("(max-width: 620px)");
+        var mq3 = window.matchMedia("(max-device-width: 620px)");
+        if (mq2.matches || mq3.matches) {
+          $(".nav__topbar").fadeIn();
+        }else {
+          $(".nav--main").fadeIn();
+        }              resize.onstart();
+
+        $scope.isSuccessful = true;
       },
       function handleReject(imageLocation) {
         // Loading failed on at least one image.
@@ -274,11 +271,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
         console.info("Preload Failure");
       },
       function handleNotify(event) {
-        if (percent < 50){
         $scope.percentLoaded = event.percent;
         red.style.height = (parseInt(red.style.height, 10) - 2) + "px";
         red.style.top = (parseInt(red.style.top, 10) - 2) + "px";
-        }
       }
     );
   }
