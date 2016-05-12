@@ -236,7 +236,7 @@ label:hover {
   font-size: 2.0rem;
 }
 .bottom__colors {
-  height: 25%;
+  height: 20%;
 }
 .bottom__rondelechk:checked + .bottom__rondelelbl > .bottom__rondelectr {
   background-color: white;
@@ -285,7 +285,7 @@ label:hover {
     overflow-y: hidden;
   }
   .bottom__colors {
-    height: 17%;
+    height: 12.5%;
   }
 }
 @media only screen and (max-width: 620px) {
@@ -653,7 +653,7 @@ label:hover {
       -ms-flex-pack: center;
           justify-content: center;
   float: right;
-  /*margin-right: 30px;*/
+  margin-right: 72px;
 }
 .top__overlay--customize {
   position: absolute;

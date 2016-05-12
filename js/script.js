@@ -53,7 +53,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   black.style.height = screenWidth*.15 + "px";
 
   $scope.change = (screenWidth*.15)/100;
-  console.log(screenWidth*.15);
+  // console.log(screenWidth*.15);
   red.style.width = screenWidth*.15 + "px";
   black.style.width = screenWidth*.15 + "px";
 
@@ -95,12 +95,12 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.percentLoaded = 0;
   // I am the image SRC values to preload and display.
   $scope.imageLocations = [];
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/A/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/B/rneck" + (i + 1) + "b.png");
   }
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/RondelesNew/rondelle" + (i + 1) + ".png");
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
   $scope.imageLocations.push("../images/logo.jpg");
@@ -186,7 +186,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   var screenWidth = window.screen.width;
   red.style.height = screenWidth*.15 + "px";
 
-  console.log(screenWidth*.15);
+  // console.log(screenWidth*.15);
   red.style.width = screenWidth*.15 + "px";
   red.style.top = "-4px";
   $('.nav__link--mobile').click(function(event) {
@@ -221,12 +221,12 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   $scope.percentLoaded = 0;
   // I am the image SRC values to preload and display.
   $scope.imageLocations = [];
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/A/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/B/rneck" + (i + 1) + "b.png");
   }
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/RondelesNew/rondelle" + (i + 1) + ".png");
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
   $scope.imageLocations.push("../images/logo.jpg");
@@ -310,7 +310,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   var screenWidth = window.screen.width;
   red.style.height = screenWidth*.15 + "px";
 
-  console.log(screenWidth*.15);
+  // console.log(screenWidth*.15);
   red.style.width = screenWidth*.15 + "px";
   red.style.top = "-4px";
   $('.nav__link--change').off();
@@ -360,7 +360,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
     };
   }
   $scope.getSpriteStyle = function(id) {
-    return 'url(' + $scope.imageLocations[72 + id] + ')';
+    return 'url(' + $scope.imageLocations[90 + id] + ')';
   }
   $scope.getImage = function(id) {
     return "url(" + $scope.imageLocations[id] + ")";
@@ -390,9 +390,9 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
   // I am the image SRC values to preload and display.
   $scope.imageLocations = [];
   $scope.radioLeft = [];
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rneck" + (i + 1) + "a.png");
-    $scope.imageLocations.push("../images/Rondeles_Necklace/rnec" + (i + 1) + "b.png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/A/rneck" + (i + 1) + "a.png");
+    $scope.imageLocations.push("../images/Rondeles_NecklaceNew/B/rneck" + (i + 1) + "b.png");
     if (i * 2 == $scope.chosenLeft || 2 * i + 1 == $scope.chosenRight) {
       $scope.radioLeft.push({
         val: 2 * i + 1,
@@ -405,8 +405,8 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
       });
     }
   }
-  for (var i = 0; i < 36; i++) {
-    $scope.imageLocations.push("../images/Rondeles/rondelle" + (i + 1) + ".png");
+  for (var i = 0; i < 45; i++) {
+    $scope.imageLocations.push("../images/RondelesNew/rondelle" + (i + 1) + ".png");
   }
   $scope.imageLocations.push("../images/Rondeles_Necklace/necklace_base.jpg");
   $scope.imageLocations.push("../images/logo.png");
@@ -521,7 +521,7 @@ pearlsApp.config(function($routeProvider, $locationProvider) {
 pearlsApp.factory("resize", function() {
   return {
     resize: function() {
-      console.log("RESIZE");
+      // console.log("RESIZE");
 
       var div = $('.nav--main');
 
@@ -532,7 +532,7 @@ pearlsApp.factory("resize", function() {
       div.css('width', newWidth);
       var content = $('#content');
       if (mq2.matches || mq3.matches) {
-        console.log("GOTEM");
+        // console.log("GOTEM");
         $(".nav__topbar").css("display","flex");
         $(".nav--main").css("display","none");
 
@@ -550,7 +550,7 @@ pearlsApp.factory("resize", function() {
       }
     },
     onstart: function() {
-      console.log("ONSTART");
+      // console.log("ONSTART");
       $('.modal').fadeOut(200);
       $('.checkout').fadeOut(200);
       $('.contactform').fadeOut(200);
